@@ -226,6 +226,9 @@ def create_submission(session):
             else:
                 date = parsed_date
 
+        # Need to set this before checking for a prev submission as that would void it and remove from lookup
+        first_place_before = get_first_place_run(session, category, chapter, sub_chapter)
+
         check_existing_submission = (
             session.query(Submission)
             .filter(Submission.category == category, Submission.chapter == chapter, Submission.sub_chapter == sub_chapter,
@@ -245,8 +248,6 @@ def create_submission(session):
                                          sub_chapter=sub_chapter, video_url=video_url, time_complete=time_int,
                                          category=category, user_id=curr_user.id, voided=False, reported=False,
                                          description=description)
-
-        first_place_before = get_first_place_run(session, category, chapter, sub_chapter)
 
         session.add(new_user_submission)
         session.commit()
