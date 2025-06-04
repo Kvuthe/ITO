@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .mix-blend-lighten {
+    mix-blend-mode: lighten;
+  }
+
+  .mix-blend-darken {
+    mix-blend-mode: darken;
+  }
+}
+
+
+@layer base {
+  :root {
+    --color-bg-primary: #242933;
+    --color-fg-primary: #2e3440;
+    --color-fg-secondary: #12151a;
+    --color-fg-third: #242933;
+    --color-active: #88c0d0;
+    --color-text-base: #d8dee9;
+    --color-text-dark-bg: #d8dee9;
+    --color-text-active: #1f1e1e;
+    --color-border-base: #9499a4;
+    --mix-blend-theme: lighten;
+  }
+}
+
+.theme-Light {
+  --color-bg-primary: #ffffff;
+  --color-fg-primary: #c8cedf;
+  --color-fg-secondary: #393161;
+  --color-fg-third: #ffffff;
+  --color-active: #393161;
+  --color-text-base: #2d2076;
+  --color-text-dark-bg: #dfddea;
+  --color-text-active: #dfddea;
+  --color-border-base: #584e92;
+  --mix-blend-theme: darken;
+  --mix-blend-theme-two: overlay;
+}
+
+.theme-Dark {
+  --color-bg-primary: #242933;
+  --color-fg-primary: #2e3440;
+  --color-fg-secondary: #12151a;
+  --color-fg-third: #242933;
+  --color-active: #88c0d0;
+  --color-text-base: #d8dee9;
+  --color-text-dark-bg: #d8dee9;
+  --color-text-active: #1f1e1e;
+  --color-border-base: #9499a4;
+  --mix-blend-theme: lighten;
+}
+
+.theme-Light-Fun {
+  --color-bg-primary: #ebe1ef;
+  --color-fg-primary: #dac7e2;
+  --color-fg-secondary: #746585;
+  --color-fg-third: #ebe1ef;
+  --color-active: #746585;
+  --color-text-base: #212b43;
+  --color-text-dark-bg: #e0d2ec;
+  --color-text-active: #e0d2ec;
+  --color-border-base: #584e92;
+  --mix-blend-theme: darken;
+}
+
+.theme-Stealth {
+  --color-bg-primary: #010203;
+  --color-fg-primary: #383e42;
+  --color-fg-secondary: #5e676e;
+  --color-fg-third: #7d8891;
+  --color-active: #5e676e;
+  --color-text-base: #191d1f;
+  --color-text-dark-bg: #383e42;
+  --color-text-active: #191d1f;
+  --color-border-base: #383e42;
+  --mix-blend-theme: lighten;
+}
+
+.theme-Fire {
+  --color-bg-primary: #0f0000;
+  --color-fg-primary: #683434;
+  --color-fg-secondary: #993434;
+  --color-fg-third: #0f0000;
+  --color-active: #993434;
+  --color-text-base: #ffffff;
+  --color-text-dark-bg: #ffffff;
+  --color-text-active: #191d1f;
+  --color-border-base: #383e42;
+  --mix-blend-theme: lighten;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.mix-blend-theme {
+  mix-blend-mode: var(--mix-blend-theme);
+}

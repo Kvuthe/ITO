@@ -1,0 +1,2 @@
+backend/env_prod.env
+backend/.venv/

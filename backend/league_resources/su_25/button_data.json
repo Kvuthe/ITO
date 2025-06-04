@@ -1,0 +1,24 @@
+{
+  "week_1": {
+    "1" : {
+      "name": "Biting The Dust",
+      "category": "Any%",
+      "background": "/league_resources/images/BitingTheDust.jpg"
+    },
+    "2": {
+      "name": "Biting The Dust 2",
+      "category": "Any%",
+      "background": "/league_resources/images/BitingTheDust.jpg"
+    },
+    "3": {
+      "name": "Biting The Dust 3",
+      "category": "Any%",
+      "background": "/league_resources/images/BitingTheDust.jpg"
+    },
+    "4": {
+      "name": "Biting The Dust 4",
+      "category": "Any%",
+      "background": "/league_resources/images/BitingTheDust.jpg"
+    }
+  }
+}

@@ -1,0 +1,871 @@
+{
+  "game_titles": [
+    "It Takes Two"
+  ],
+  "itt": {
+    "game": "itt",
+
+    "categories": {
+      "Any%": {
+          "Shed": {
+            "Btd Wall Climb": {
+              "Timing Start": "CP VacuumNoIntro",
+              "Timing End": "RCP Near Weight",
+              "Extra Info": ""
+            },
+            "Depths Intro": {
+              "Timing Start": "CP MineIntroNoCutscene",
+              "Timing End": "RCP Yellow Box",
+              "Extra Info": ""
+            },
+            "Depths Nails": {
+              "Timing Start": "CP Pre Boss Double Interact",
+              "Timing End": "Skippable Cutscene Start",
+              "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+            },
+            "Back Bike": {
+              "Timing Start": "CP GrindSection Start PostCutscene",
+              "Timing End": "Ground Pound Shovel",
+              "Extra Info": "Timing ends on the auditory sound of hitting the shovel. Ideally play with game music turned off and no have no music in the background for the most accurate timing — If you are unsure of your time feel free to ping an ITO Mod in the discord for a retime"
+            }
+          },
+          "Tree": {
+            "Fresh Air": {
+              "Timing Start": "CP Tree_Approach_LevelStart",
+              "Timing End": "Handle Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            },
+            "Captured Start": {
+              "Timing Start": "CP Bridge",
+              "Timing End": "RCP @ MGW Timing",
+              "Extra Info": ""
+            },
+            "Wasp Skip Oob": {
+              "Timing Start": "MGW Tug Of War",
+              "Timing End": "Black Fadeout",
+              "Extra Info": ""
+            },
+            "Wasp Skip Rail": {
+              "Timing Start": "MGW Tug Of War",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "DR Wall Climb": {
+              "Timing Start": "CP Entry or Entry (No Cutscene)",
+              "Timing End": "RCP @ Save",
+              "Extra Info": "If starting from \"Entry\" make sure your are doing using \"Experimental new timer that 'removes' ping\" to remove your CS time"
+            },
+            "Getaway": {
+              "Timing Start": "Chapter Select Getaway",
+              "Timing End": "Skippable Cutscene Start",
+              "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+            },
+            "Plunger Dunger": {
+              "Timing Start": "CP Elevator (No Cutscene)",
+              "Timing End": "First Frame of Landing",
+              "Extra Info": ""
+            }
+          },
+          "Rose's Room": {
+            "Pillow Fort": {
+              "Timing Start": "CP Pillow Fort Intro No CS",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Spaced Out May Start": {
+              "Timing Start": "CP SpaceStationNoIntro",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Hopscotch Blocks": {
+              "Timing Start": "CP Intro - No Cutscene",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Kaleidoscope End": {
+              "Timing Start": "CP Kaleidoscope Intro",
+              "Timing End": "Tower Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            },
+            "Dino Land Ending Lever": {
+              "Timing Start": "CP Dinoland_Platforming",
+              "Timing End": "Skippable Cutscene Start",
+              "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+            },
+            "Greatest Show": {
+              "Timing Start": "CP Circus_Start",
+              "Timing End": "Cannon Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            },
+            "Once Upon a Time": {
+              "Timing Start": "CP Castle_Courtyard_Start_NoIntro",
+              "Timing End": "Either Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            }
+          },
+          "Clock": {
+            "Gates of Time Start": {
+              "Timing Start": "CP Clockwork - Intro No Cutscene",
+              "Timing End": "Button Press",
+              "Extra Info": "Timing ends on first frame of the middle partition moving"
+            },
+            "Clocktown Start": {
+              "Timing Start": "CP ClockTown_NoIntro",
+              "Timing End": "Elevator Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            },
+            "Bull Skip": {
+              "Timing Start": "CP Statue Room",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Fast Ropes": {
+              "Timing Start": "CP Pocket Watch Room",
+              "Timing End": "Door Interact",
+              "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+            }
+          },
+          "Snow Globe": {
+            "Warming Up": {
+              "Timing Start": "CP Gate",
+              "Timing End": "Within Magnet Range",
+              "Extra Info": "Time ends on first frame your within magnet interact range."
+            },
+            "Winter Village": {
+              "Timing Start": "CP Town Entry (No Cutscene)",
+              "Timing End": "Bobsled Grab",
+              "Extra Info": ""
+            },
+            "Bti Wall Climb": {
+              "Timing Start": "CP Entry (No Cutscene)",
+              "Timing End": "Cutscene",
+              "Extra Info": ""
+            },
+            "Bti Oob": {
+              "Timing Start": "CP Entry (No Cutscene)",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Slippery Start": {
+              "Timing Start": "From Interact",
+              "Timing End": "On Landing/Death",
+              "Extra Info": "Timing starts the frame the interact prompt disappears off your screen. Timing stops at first frame of either the landing or death animation. "
+            },
+            "Slippery Cabin": {
+              "Timing Start": "CP Collapse",
+              "Timing End": "Read Note",
+              "Extra Info": "Time ends on the first frame the active player's indicator arrow disappears from the non-active player's view (once no longer split screen)."
+            }
+          },
+          "Garden": {
+            "Green Fingers": {
+              "Timing Start": "CP Intro_NoCutscene",
+              "Timing End": "Interact with Spa Door",
+              "Extra Info": "Time ends on the first frame of the \"Partner Indicator\" disappears off screen\n\nThis run follows the Any% route, however since there is no clear way to confirm CP progression please make a concerted effort to enter each CP volume."
+            },
+            "Weed Whacking": {
+              "Timing Start": "Chapter Select Weed Whacking",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Trespassing": {
+              "Timing Start": "CP MoleTunnels_Level_Start",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Frog Pond Mgw": {
+              "Timing Start": "CP FrogPondIntroNoCS",
+              "Timing End": "RCP @ MGW Timing",
+              "Extra Info": ""
+            }
+          },
+          "Attic": {
+            "Setting State Pre Mgw": {
+              "Timing Start": "CP ConcertHall_Backstage_NoCS",
+              "Timing End": "RCP @ MGW Timing",
+              "Extra Info": ""
+            },
+            "Setting State Post Mgw": {
+              "Timing Start": "MGW Track Runner",
+              "Timing End": "Interact",
+              "Extra Info": ""
+            },
+            "Turn Up": {
+              "Timing Start": "CP RainbowSlideNoCutscene",
+              "Timing End": "RCP @ Save",
+              "Extra Info": ""
+            },
+            "Turn Up Post Rcp": {
+              "Timing Start": "CP Beat Platforming",
+              "Timing End": "First Frame of Death",
+              "Extra Info": ""
+            },
+            "Grand Finale": {
+              "Timing Start": "Chapter Select Grand Finale",
+              "Timing End": "Skippable Cutscene Start",
+              "Extra Info": "You must use the Cutscene Remover in your splits for this one only.\nTo activate:\nOpen Splits -> Edit Splits -> Settings\n-> Tick \"Optional Settings\", \"Comm Gold Resets\" and \"Experimental new timer that 'removes' ping\". Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+            }
+          }
+      },
+
+      "Inbounds": {
+        "Shed": {
+          "Btd": {
+            "Timing Start": "CP VacuumNoIntro",
+            "Timing End": "RCP Near Weight",
+            "Extra Info": ""
+          },
+          "Depths Intro": {
+            "Timing Start": "CP MineIntroNoCutscene",
+            "Timing End": "RCP Yellow Box",
+            "Extra Info": ""
+          },
+          "Depths Nails": {
+            "Timing Start": "CP Pre Boss Double Interact",
+            "Timing End": "Skippable Cutscene Start",
+            "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+          },
+          "Wired Up": {
+            "Timing Start": "CP GrindSection Start PostCutscene",
+            "Timing End": "Ground Pound Shovel",
+            "Extra Info": "Timing ends on the auditory sound of hitting the shovel. Ideally play with game music turned off and no have no music in the background for the most accurate timing — If you are unsure of your time feel free to ping an ITO Mod in the discord for a retime"
+          }
+        },
+        "Tree": {
+          "Fresh Air": {
+            "Timing Start": "CP Tree_Approach_LevelStart",
+            "Timing End": "Handle Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Cody Hanging Stuff": {
+            "Timing Start": "CP HangingStuff",
+            "Timing End": "RCP At Lift",
+            "Extra Info": "Make sure to grab the checkpoint by the walkie talkie first."
+          },
+          "Cody Lift": {
+            "Timing Start": "CP Lift",
+            "Timing End": "On Death",
+            "Extra Info": ""
+          },
+          "Rails": {
+            "Timing Start": "CP Rails",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Wasp Start": {
+            "Timing Start": "CP Vault Door",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Bottles": {
+            "Timing Start": "CP Bottles",
+            "Timing End": "RCP @ End of Slide",
+            "Extra Info": ""
+          },
+          "Slide": {
+            "Timing Start": "CP Slide",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Plunger Dunger": {
+            "Timing Start": "CP Elevator (No Cutscene)",
+            "Timing End": "First Frame of Landing",
+            "Extra Info": ""
+          }
+        },
+        "Rose's Room": {
+          "Pillow Fort": {
+            "Timing Start": "CP Pillow Fort Intro No CS",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Spaced Out Cody Start": {
+            "Timing Start": "CP SpaceStationNoIntro",
+            "Timing End": "Battery Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Inside Ufo Cody": {
+            "Timing Start": "CP MoonBaboonInsideUFO",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Hopscotch Blocks": {
+            "Timing Start": "CP Intro - No Cutscene",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Whoopee Cushion": {
+            "Timing Start": "CP Hopscotch Dungeon - Whoopee Cushions",
+            "Timing End": "Door Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Fidget Spinner": {
+            "Timing Start": "CP Fidget Spinners",
+            "Timing End": "Interact at the end filled up",
+            "Extra Info": ""
+          },
+          "Kaleidoscope End": {
+            "Timing Start": "CP Kaleidoscope Intro",
+            "Timing End": "Tower Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Dino Land": {
+            "Timing Start": "CP Dinoland_Platforming",
+            "Timing End": "Skippable Cutscene Start",
+            "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+          },
+          "Greatest Show": {
+            "Timing Start": "CP Circus_Start",
+            "Timing End": "Cannon Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Once Upon A Time": {
+            "Timing Start": "CP Castle_Courtyard_Start_NoIntro",
+            "Timing End": "Either Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          }
+        },
+        "Clock": {
+          "Forest": {
+            "Timing Start": "CP Forest - No Cutscene",
+            "Timing End": "Elevator Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Statue Room May Side": {
+            "Timing Start": "CP Statue Room",
+            "Timing End": "Interact with Key",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen after interacting with the left key."
+          },
+          "Statue Room Cody Side": {
+            "Timing Start": "CP Statue Room",
+            "Timing End": "Interact with Cog Wheel",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Fast Ropes": {
+            "Timing Start": "CP Pocket Watch Room",
+            "Timing End": "Door Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          }
+        },
+        "Snow Globe": {
+          "Warming Up Start": {
+            "Timing Start": "CP Gate",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "May Windmill": {
+            "Timing Start": "CP Timber",
+            "Timing End": "Within Magnet Range",
+            "Extra Info": "Time ends on first frame your within magnet interact range."
+          },
+          "Flipper": {
+            "Timing Start": "CP Flipper",
+            "Timing End": "Sound of Bridge Slam",
+            "Extra Info": "Timing ends on the auditory sound of the bridge slamming. Ideally play with game music turned off and no have no music in the background for the most accurate timing — If you are unsure of your time feel free to ping an ITO Mod in the discord for a retime"
+          },
+          "Warming Up Ice": {
+            "Timing Start": "CP Cabin",
+            "Timing End": "Within Magnet Range",
+            "Extra Info": "Time ends on first frame your within magnet interact range."
+          },
+          "Town Cody Left Tower": {
+            "Timing Start": "CP Town Door",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Tow Cody Middle Tower": {
+            "Timing Start": "CP Town Door",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Town May Tower": {
+            "Timing Start": "CP Town Door",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Bobsled": {
+            "Timing Start": "CP Town Bobsled",
+            "Timing End": "Bobsled Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+
+          },
+          "Bti To Wrench": {
+            "Timing Start": "CP Entry (No Cutscene)",
+            "Timing End": "Wrench Interact Range",
+            "Extra Info": "Time ends on first frame your within magnet interact range."
+          },
+          "Slippery Slopes Start": {
+            "Timing Start": "CP Entry (No cutscene)",
+            "Timing End": "First Frame of Landing Over Wall",
+            "Extra Info": "This will be based off visual and if it is unclear then we will base the timing off the audio of landing on the ice."
+          },
+          "Skating To Black": {
+            "Timing Start": "CP 2. CaveSkating",
+            "Timing End": "Read Note",
+            "Extra Info": "This will include cabin skip so it ends when you fall into black.\nTime ends on the first frame the active player's indicator arrow disappears from the non-active player's view (once no longer split screen)."
+          }
+        },
+        "Garden": {
+          "Burrower": {
+            "Timing Start": "CP Burrown Enemy",
+            "Timing End": "Interact with Spa Door",
+            "Extra Info": "Time ends on the first frame of the \"Partner Indicator\" prompt appearing on screen."
+          },
+          "Weed Whacking After Spider": {
+            "Timing Start": "CP Shrubbery_AfterLeavingSpiders",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Trespassing Start": {
+            "Timing Start": "CP MoleTunnels_Level_Start",
+            "Timing End": "Acorn Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "First Silent": {
+            "Timing Start": "CP MoleTunnels_Stealth_Start",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Second Silent": {
+            "Timing Start": "CP MoleTunnels_Stealth_SneakyBushStart",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Third Silent": {
+            "Timing Start": "CP MoleTunnels_Stealth_SneakBushMiddle",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Frog Pond Start": {
+            "Timing Start": "CP FrogPondIntroNoCS",
+            "Timing End": "Cancel to Get Off Frog",
+            "Extra Info": ""
+          }
+        },
+        "Attic": {
+          "Setting The Stage": {
+            "Timing Start": "CP ConcertHall_backstage_NoCS",
+            "Timing End": "Switch Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Cd's": {
+            "Timing Start": "CP Tutorial_Disk_Puzzle",
+            "Timing End": "Death",
+            "Extra Info": "Time ends on the first frame the active player's indicator arrow disappears from the non-active player's view https://youtu.be/zk4RY-VGdwU"
+          },
+          "Rope Room": {
+            "Timing Start": "CP JukeboxVinyl",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Portable Speaker": {
+            "Timing Start": "CP PortableSpeaker",
+            "Timing End": "Interact at End",
+            "Extra Info": "Required for you to switch to May after, to shoot the speaker and prove that it hits the microphone. Timer ends on first frame cancel shows."
+          },
+          "Sub Bass Room": {
+            "Timing Start": "CP Sub Bass Room",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Accordion": {
+            "Timing Start": "CP Classic_03_AccordionBox",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          },
+          "Shutter": {
+            "Timing Start": "CP Classic_05ShutterPuzzle",
+            "Timing End": "Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Left Side Bubbles": {
+            "Timing Start": "CP Classic_06_Heaven",
+            "Timing End": "RCP @ Save",
+            "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+          },
+          "Right Side Bubbles": {
+            "Timing Start": "CP Classic_06_Heaven",
+            "Timing End": "RCP @ Save",
+            "Extra Info": "Make sure your are running with \"Experimental new timer that 'removes' ping\" so the timer pauses on the start of the cutscene."
+          },
+          "Left Cage Key": {
+            "Timing Start": "CP Classic_07_Heaven_CageArea",
+            "Timing End": "Black Bars Appear",
+            "Extra Info": "The first frame that the black bars start coming in from the top and bottom."
+          },
+          "Nightclub Entrance": {
+            "Timing Start": "CP ConcertHall_NightClub_NoCS",
+            "Timing End": "Interact",
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
+          },
+          "Turn Up Slide": {
+            "Timing Start": "CP RainBowSlideNoCutscene",
+            "Timing End": "RCP @ Save",
+            "Extra Info": ""
+          }
+        }
+      }
+    }
+  },
+  "sf": {
+    "game": "sf",
+    "categories": {
+      "Any%": {
+        "one": {
+          "BTD Wall Climb": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Depths Intro": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Depths Nails": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "BackBike": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "two": {
+          "Fresh Air": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Captured Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Wasp Skip OOB": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Wasp Skip Rail": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "DR Wall Climb": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Getaway": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "three": {
+          "Pillow Fort": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Spaced Out May Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Hopscotch Blocks": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Kaleidoscope End": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Dino Land Ending Lever": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Greatest Show": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Once Upon a Time": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "four": {
+          "Gates of Time Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Clocktown Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Bull Skip": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Fast Ropes": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "five": {
+          "Warming Up": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Winter Village": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "BTI Wall Climb": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "BTI OOB": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Slippery Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Slippery Cabin": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "six": {
+          "Green Fingers": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Weed Whacking": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Trespassing": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Frog Pond MGW": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "seven": {
+          "Setting State Pre MGW": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Setting State Post MGW": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Turn Up": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Turn Up Post RCP": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Grand Finale": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        }
+      },
+
+      "In Bounds": {
+        "eight": {
+          "BTD": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Depths Intro": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Depths Nails": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Wired Up": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "nine": {
+          "Pillow Fort": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Spaced Out Cody Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Inside UFO Cody": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Hopscotch Blocks": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Whoopee Cushion": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Fidget Spinner": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Kaleidoscope End": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Dino Land": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Greatest Show": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Once Upon A Time": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "ten": {
+          "Forest": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Statue Room May Side": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Statue Room Cody Side": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Fast Ropes": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "eleven": {
+          "Warming Up Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "May Windmill": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Flipper": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Warming Up Ice": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "twelve": {
+          "Burrower": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Weed Whacking After Spider": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Trespassing Start": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        },
+        "thirteen": {
+          "Setting The Stage": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "CD's": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Rope Room": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          },
+          "Portable Speaker": {
+            "Timing Start": "",
+            "Timing End": "",
+            "Extra Info": ""
+          }
+        }
+      }
+    }
+  }
+}
