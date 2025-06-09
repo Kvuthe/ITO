@@ -104,7 +104,6 @@ def get_me():
 @app.route('/api/profile/<username>', methods=['GET'])
 @db_session
 def profile_page(session, username):
-
     try:
 
         # Need to order the submissions by date
@@ -114,31 +113,41 @@ def profile_page(session, username):
             .first()
         )
 
+        if not user:
+            return ito_api_response(success=False, message='User not found', status_code=404)
+
         users_query = (
             session.query(User)
             .order_by(desc(User.score))
         )
 
+        # Handle regular submissions
         if user.submissions:
-
             sorted_submissions = sorted(
                 [sub for sub in user.submissions if not sub.voided],
                 key=lambda x: x.date,
                 reverse=True
             )
+        else:
+            sorted_submissions = []
+
+        # Handle league runs
+        league_runs = (
+            session.query(LeagueRun)
+            .filter(LeagueRun.user_id == user.id)
+            .order_by(desc(LeagueRun.date))
+            .all()
+        )
 
         user_rank = 0
-
-        for index, user in enumerate(users_query):
-            if user.username == username:
+        for index, ranked_user in enumerate(users_query):
+            if ranked_user.username == username:
                 user_rank = index + 1
                 break
 
-
-        if not user:
-            return ito_api_response(success=False, message='User not found', status_code=404)
-
         data = get_single_entry(user)
+
+        # Regular submissions data
         if user.submissions:
             data['submissions'] = get_all_list(sorted_submissions)
             data['total_runs'] = len(user.submissions)
@@ -147,6 +156,15 @@ def profile_page(session, username):
             data['submissions'] = []
             data['total_runs'] = 0
             data['runs'] = 0
+
+        # League runs data
+        if league_runs:
+            data['league_runs'] = get_all_list(league_runs)
+            data['total_league_runs'] = len(league_runs)
+        else:
+            data['league_runs'] = []
+            data['total_league_runs'] = 0
+
         data['rank'] = user_rank
         data['ordered_submissions'], data['chapter_scores'] = organize_submissions(data['submissions'])
         data.pop('password')
@@ -154,7 +172,8 @@ def profile_page(session, username):
         return ito_api_response(success=True, data=data, message='Account profile page retrieved', status_code=200)
     except Exception as error:
         print(error)
-        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}", status_code=500, error=str(error))
+        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}",
+                                status_code=500, error=str(error))
 
 
 @app.route('/api/me/background_color', methods=['POST'])

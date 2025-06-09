@@ -4,22 +4,34 @@
       "1" : {
       "name": "Fast Ropes",
       "category": "Any%",
-      "background": "/league_resources/images/FastRopes.png"
+      "background": "/league_resources/images/FastRopes.png",
+      "Timing Start": "CP Pocket Watch Room",
+      "Timing End": "Door Interact",
+      "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen."
       },
       "2": {
         "name": "Backbike",
         "category": "Any%",
-        "background": "/league_resources/images/Backbike.png"
+        "background": "/league_resources/images/Backbike.png",
+        "Timing Start": "CP GrindSection Start PostCutscene",
+        "Timing End": "Ground Pound Shovel",
+        "Extra Info": "Timing ends on the auditory sound of hitting the shovel. Ideally play with game music turned off and no have no music in the background for the most accurate timing — If you are unsure of your time feel free to ping an ITO Mod in the discord for a retime"
       },
       "3": {
         "name": "Winter Village",
         "category": "Any%",
-        "background": "/league_resources/images/WinterVillage.png"
+        "background": "/league_resources/images/WinterVillage.png",
+        "Timing Start": "CP Town Entry (No Cutscene)",
+        "Timing End": "Bobsled Grab",
+        "Extra Info": ""
       },
       "4": {
         "name": "Hopscotch Blocks",
         "category": "Any%",
-        "background": "/league_resources/images/HopscotchBlocks.png"
+        "background": "/league_resources/images/HopscotchBlocks.png",
+        "Timing Start": "CP Intro - No Cutscene",
+        "Timing End": "RCP @ Save",
+        "Extra Info": ""
       }
     },
     "open": true,

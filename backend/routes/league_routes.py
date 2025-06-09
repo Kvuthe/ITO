@@ -87,6 +87,8 @@ def get_leagues_leaderboard(session, season, week, level):
             run_data['username_color'] = run.user.username_color
             runs.append(run_data)
 
+        print("Runs", runs)
+
         return ito_api_response(success=True, status_code=200, data=runs, message='success')
 
     except Exception as e:

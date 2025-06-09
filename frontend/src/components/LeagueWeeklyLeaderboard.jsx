@@ -177,7 +177,6 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
 
                         setLeaderboardData(rankedPlayers);
                         setLoading(false);
-                        return;
                     }
                 }
             }
@@ -190,6 +189,8 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
             }
 
             const data = await response.body.data;
+
+            console.log("Ret data", data)
 
             if (data && Array.isArray(data)) {
                 const rankedPlayers = data.map((player, index) => ({
@@ -379,17 +380,25 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
             {/* Full leaderboard section below */}
             {selectedLevel && weekData && weekData.open && (
                 <Card className="w-full bg-fgPrimary border-none">
-                    <CardHeader className="flex flex-row justify-between items-center">
-                        <CardTitle className="text-tBase font-poppins">
-                            {getLevelTitle(selectedLevel)} - Week {selectedWeek} Leaderboard
-                        </CardTitle>
-                        {user && (
-                            <Link
-                                to="/leagues/submit"
-                                className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
-                            >
-                                Submit A Run
-                            </Link>
+                    <CardHeader className="flex flex-col items-start gap-2">
+                        <div className="flex flex-row justify-between items-center w-full">
+                            <CardTitle className="text-tBase font-poppins">
+                                {getLevelTitle(selectedLevel)} - Week {selectedWeek} Leaderboard
+                            </CardTitle>
+                            {user && (
+                                <Link
+                                    to="/leagues/submit"
+                                    className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
+                                >
+                                    Submit A Run
+                                </Link>
+                            )}
+                        </div>
+                        {weekData?.levels?.[selectedLevel] && (
+                            <div className="text-tBase text-sm font-poppins">
+                                <p><span className="font-bold">Timing Start:</span> {weekData.levels[selectedLevel]["Timing Start"]}</p>
+                                <p><span className="font-bold">Timing End:</span> {weekData.levels[selectedLevel]["Timing End"]}</p>
+                            </div>
                         )}
                     </CardHeader>
                     <CardContent>

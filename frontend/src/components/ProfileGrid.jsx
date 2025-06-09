@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsContent } from "@/components/ui/tabs";
@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import gameData from '../GameData.json';
 import {useApi} from "@/contexts/ApiProvider.jsx";
 import { useUser } from "@/contexts/UserProvider.jsx";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import UserSettingsModal from "../components/UserSettingsModal.jsx";
 import 'flag-icons/css/flag-icons.min.css'
 import {
@@ -563,6 +563,13 @@ const ProfileGrid = ({ username, showUsernameColor }) => {
                                     </svg>
                                 </button>
                             )}
+
+                            {/*<Link*/}
+                            {/*    to={`/profile/${profileData.username}/leagues`}*/}
+                            {/*    className="text-colorActive absolute top-4 right-4 text-base bg-fgThird rounded-lg px-2 py-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-2 border-colorActive font-bold"*/}
+                            {/*>*/}
+                            {/*    User League Runs*/}
+                            {/*</Link>*/}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
