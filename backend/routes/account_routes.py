@@ -399,7 +399,9 @@ def create_league_submission(session):
         video_url = data.get('video_url')
 
         season = 'su_25'
-        time_int = convert_time_to_int(time_milliseconds + "0", time_seconds, time_minutes)
+        if len(time_milliseconds) < 3:
+            time_milliseconds += "0"
+        time_int = convert_time_to_int(time_milliseconds, time_seconds, time_minutes)
 
         check_existing_run = (
             session.query(LeagueRun)

@@ -26,7 +26,7 @@ import LeaguePage from "./pages/LeaguePage.jsx";
 import LeagueSubmissionPage from "./pages/LeagueSubmissionPage.jsx";
 import BracketPage from "./pages/BracketPage.jsx";
 
-const themes = ["Dark", "Light", "Light-Fun", "Fire"];
+const themes = ["Dark", "Light", "Light-Fun", "Fire", "Itt"];
 
 function App() {
     const [cookies, setCookie] = useCookies(["theme", "showUsernameColor"])

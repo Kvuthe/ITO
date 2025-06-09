@@ -94,6 +94,19 @@
   --mix-blend-theme: lighten;
 }
 
+.theme-Itt {
+  --color-bg-primary: #4a4852;
+  --color-fg-primary: #5b5659;
+  --color-fg-secondary: #484447;
+  --color-fg-third: #3b3941;
+  --color-active: #dec58a;
+  --color-text-base: #ffffff;
+  --color-text-dark-bg: #ffffff;
+  --color-text-active: #1d1d1d;
+  --color-border-base: #383e42;
+  --mix-blend-theme: lighten;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

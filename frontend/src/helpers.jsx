@@ -29,6 +29,11 @@ const themeShadows = {
         drop-shadow-[-1px_-1px_0_black]
         drop-shadow-[1px_-1px_0_black]
         drop-shadow-[-1px_1px_0_black]
+        drop-shadow-[1px_1px_0_black]`,
+    Itt: `
+        drop-shadow-[-1px_-1px_0_black]
+        drop-shadow-[1px_-1px_0_black]
+        drop-shadow-[-1px_1px_0_black]
         drop-shadow-[1px_1px_0_black]`
 };
 
