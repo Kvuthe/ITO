@@ -404,7 +404,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                     <CardContent>
                         {loading ? (
                             <div className="flex justify-center py-12">
-                                <div className="text-white">Loading leaderboard data...</div>
+                                <div className="text-tBase">Loading leaderboard data...</div>
                             </div>
                         ) : (
                             <div className="relative overflow-x-auto">
@@ -433,7 +433,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                                                         </TableCell>
                                                         <TableCell
                                                             className={`font-poppins hover:underline text-tBase ${themeString}`}
-                                                            style={{ color: player.color }}
+                                                            style={showUsernameColor ? { color: player.color } : {}}
                                                         >
                                                                         <span
                                                                             className={`fi fi-${player.flag?.toLowerCase()} ml-4 mr-1`}
