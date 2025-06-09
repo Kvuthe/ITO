@@ -382,6 +382,17 @@ def create_league_submission(session):
         season = 'su_25'
         time_int = convert_time_to_int(time_milliseconds + "0", time_seconds, time_minutes)
 
+        check_existing_run = (
+            session.query(LeagueRun)
+            .filter(LeagueRun.season == season, LeagueRun.week == week,
+                    LeagueRun.level == level, LeagueRun.user_id == curr_user.id)
+            .all()
+        )
+
+        if check_existing_run:
+            for run in check_existing_run:
+                session.delete(run)
+
         new_league_run = LeagueRun(date=datetime.datetime.now(), user_id=curr_user.id, season=season, week=week,
                                    level=level, video_url=video_url, time_complete=time_int)
 
