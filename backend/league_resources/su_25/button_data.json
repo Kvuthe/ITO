@@ -4,22 +4,22 @@
       "1" : {
       "name": "Fast Ropes",
       "category": "Any%",
-      "background": "/league_resources/images/BitingTheDust.jpg"
+      "background": "/league_resources/images/FastRopes.png"
       },
       "2": {
         "name": "Backbike",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/Backbike.png"
       },
       "3": {
         "name": "Winter Village",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/WinterVillage.png"
       },
       "4": {
         "name": "Hopscotch Blocks",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/HopscotchBlocks.png"
       }
     },
     "open": true,
