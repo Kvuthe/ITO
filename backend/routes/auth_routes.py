@@ -66,22 +66,23 @@ def token_auth_verify(access_token):
     :return: User object if the access token is valid; else None
     :rtype: User
     """
-    if access_token:
-        access_decode = jwt.decode(access_token, API_KEY, algorithms=['HS256'])['access_token']
+    session = Session()
+    try:
+        if access_token:
+            access_decode = jwt.decode(access_token, API_KEY, algorithms=['HS256'])['access_token']
 
-        session = Session()
-        database_token = session.query(Token).filter_by(access_token=access_decode).first()
+            database_token = session.query(Token).filter_by(access_token=access_decode).first()
 
-        try:
+
             if database_token.access_expiration > datetime.datetime.now():
                 session.close()
                 return session.query(User).filter_by(id=database_token.user).first()
             else:
                 session.close()
                 return None
-        except Exception:
-            session.close()
-            return None
+    except Exception:
+        session.close()
+        return None
 
 def _create_and_add_token(session, curr_user_id):
     access_token = secrets.token_urlsafe(32)

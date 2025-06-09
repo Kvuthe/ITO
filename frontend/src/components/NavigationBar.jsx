@@ -35,12 +35,12 @@ const Navbar = () => {
                         Leaderboards
                     </Link>
 
-                    {/*<Link*/}
-                    {/*    to="/leagues"*/}
-                    {/*    className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"*/}
-                    {/*>*/}
-                    {/*    Leagues*/}
-                    {/*</Link>*/}
+                    <Link
+                        to="/leagues"
+                        className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
+                    >
+                        Leagues
+                    </Link>
 
                     {user && (
                         <Link to="/new_submission" className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppinsBold border-colorActive border-2 font-bold">

@@ -2,12 +2,13 @@ import TotalLeagueComponent from "@/components/TotalLeagueComponent.jsx";
 import LeagueWeeklyLeaderboard from "@/components/LeagueWeeklyLeaderboard.jsx";
 import { themeShadows } from "@/helpers.jsx";
 
-const LeaguePage = ({ theme }) => {
+const LeaguePage = ({ theme, showUsernameColor }) => {
     return (
         <div className="bg-bgPrimary min-h-screen">
             <div>
                 <LeagueWeeklyLeaderboard
                     themeString={themeShadows[theme]}
+                    showUsernameColor={showUsernameColor}
                 />
             </div>
 

@@ -12,6 +12,9 @@ const LeagueSubmissionPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [leagueData, setLeagueData] = useState(null);
+    const [currentWeek, setCurrentWeek] = useState(null);
+    const [availableLevels, setAvailableLevels] = useState([]);
 
     const cardRef = useRef(null);
 
@@ -24,14 +27,46 @@ const LeagueSubmissionPage = () => {
         milliseconds: ''
     });
 
-    const weekOptions = Array.from({ length: 8 }, (_, i) => i + 1);
+    // Fetch league data on component mount
+    useEffect(() => {
+        const fetchLeagueData = async () => {
+            try {
+                const response = await api.get('/leagues/buttons/su_25');
+                if (response.ok) {
+                    const data = response.body.data;
+                    setLeagueData(data);
 
-    const levelOptions = [
-        1,
-        2,
-        3,
-        4
-    ];
+                    const runningWeek = Object.keys(data).find(key =>
+                        key.startsWith('week_') && data[key].currently_running
+                    );
+
+                    if (runningWeek) {
+                        const weekNumber = runningWeek.replace('week_', '');
+                        setCurrentWeek(weekNumber);
+
+                        const levels = Object.keys(data[runningWeek].levels).map(levelKey => ({
+                            value: levelKey,
+                            name: data[runningWeek].levels[levelKey].name,
+                            category: data[runningWeek].levels[levelKey].category
+                        }));
+                        setAvailableLevels(levels);
+
+                        setFormData(prev => ({
+                            ...prev,
+                            week: weekNumber
+                        }));
+                    }
+                } else {
+                    throw new Error('Failed to fetch league data');
+                }
+            } catch (err) {
+                console.error('Error fetching league data:', err);
+                setError('Failed to load league data');
+            }
+        };
+
+        fetchLeagueData();
+    }, [api]);
 
     const handleSubmit = async () => {
         setLoading(true);
@@ -58,7 +93,7 @@ const LeagueSubmissionPage = () => {
             if (response.ok) {
                 setSuccess(true);
                 setFormData({
-                    week: '',
+                    week: currentWeek, // Keep the current week selected
                     level: '',
                     video_url: '',
                     minutes: '',
@@ -66,7 +101,11 @@ const LeagueSubmissionPage = () => {
                     milliseconds: ''
                 });
             } else {
-                throw new Error(response.body?.message || 'Failed to create league submission');
+                if (response.status == 401){
+                    throw new Error("Please login before submitting")
+                } else {
+                    throw new Error('Failed to create league submission');
+                }
             }
         } catch (err) {
             console.log(err);
@@ -92,17 +131,51 @@ const LeagueSubmissionPage = () => {
         }
     }, [success, error]);
 
+    // Show loading state while fetching league data
+    if (!leagueData) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
+                <Card className="w-full max-w-xl h-[700px] bg-fgPrimary border-0 mt-24">
+                    <CardContent className="flex items-center justify-center h-full">
+                        <div className="text-tBase font-poppins">Loading league data...</div>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
+
+    // Show message if no current week is running
+    if (!currentWeek) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
+                <Card className="w-full max-w-xl h-[700px] bg-fgPrimary border-0 mt-24">
+                    <CardHeader>
+                        <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex items-center justify-center">
+                        <div className="text-center text-tBase font-poppins">
+                            No league week is currently running. Please check back later.
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
             <Card className="w-full max-w-xl h-[700px] overflow-auto bg-fgPrimary border-0 mt-24" ref={cardRef}>
                 <CardHeader>
                     <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                    <div className="text-center text-sm text-tBase font-poppins opacity-75">
+                        Week {currentWeek}
+                    </div>
                 </CardHeader>
                 <CardContent>
                     {error && (
                         <>
                             <div className="bg-fgThird border border-red-400 text-tBase px-4 py-3 rounded relative">
-                                Failed to submit league entry
+                                {error}
                             </div>
                             <div className="pb-4"></div>
                         </>
@@ -118,30 +191,12 @@ const LeagueSubmissionPage = () => {
                     )}
 
                     <div className="space-y-6">
-                        {/* Week Selection */}
+                        {/* Week Selection - Now read-only showing current week */}
                         <div className="space-y-2">
                             <label className="text-sm text-tBase font-poppins">Week</label>
-                            <Select
-                                value={formData.week}
-                                onValueChange={(value) => handleChange('week', value)}
-                            >
-                                <SelectTrigger className="bg-fgThird border-0 text-tBase font-poppins">
-                                    <SelectValue placeholder="Select week" />
-                                </SelectTrigger>
-                                <SelectContent
-                                    className="text-sm bg-fgThird text-tBase border-0 font-poppins dropdown-content"
-                                    position="popper"
-                                    sideOffset={5}
-                                    align="start"
-                                    avoidCollisions={false}
-                                >
-                                    {weekOptions.map(week => (
-                                        <SelectItem key={week} value={week.toString()}>
-                                            Week {week}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="bg-fgThird border-0 text-tBase font-poppins px-3 py-2 rounded-md">
+                                Week {currentWeek}
+                            </div>
                         </div>
 
                         {/* Level Selection */}
@@ -161,9 +216,9 @@ const LeagueSubmissionPage = () => {
                                     align="start"
                                     avoidCollisions={false}
                                 >
-                                    {levelOptions.map((level, index) => (
-                                        <SelectItem key={index} value={level}>
-                                            {level}
+                                    {availableLevels.map((level) => (
+                                        <SelectItem key={level.value} value={level.value}>
+                                           {level.name} ({level.category})
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
@@ -219,7 +274,7 @@ const LeagueSubmissionPage = () => {
                         <Button
                             onClick={handleSubmit}
                             className="w-full bg-fgThird font-poppins text-tBase hover:bg-fgSecondary hover:text-tDarkBg"
-                            disabled={loading || !formData.week || !formData.level || !formData.video_url}
+                            disabled={loading || !formData.level || !formData.video_url}
                         >
                             {loading ? 'Submitting...' : 'Submit League Entry'}
                         </Button>

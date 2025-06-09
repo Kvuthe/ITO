@@ -21,9 +21,10 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import Navbar from './components/NavigationBar.jsx';
 import Footer from './components/Footer.jsx';
 import 'typeface-poppins'
-import SubmissionModPage from "@/pages/SubmissionModPage.jsx";
-import LeaguePage from "@/pages/LeaguePage.jsx";
-import LeagueSubmissionPage from "@/pages/LeagueSubmissionPage.jsx";
+import SubmissionModPage from "./pages/SubmissionModPage.jsx";
+import LeaguePage from "./pages/LeaguePage.jsx";
+import LeagueSubmissionPage from "./pages/LeagueSubmissionPage.jsx";
+import BracketPage from "./pages/BracketPage.jsx";
 
 const themes = ["Dark", "Light", "Light-Fun", "Fire"];
 
@@ -77,9 +78,11 @@ function App() {
 
                                     <Route path="/itt" element={<MainPage theme={theme} showUsernameColor={showUsernameColor} />} />
 
-                                    <Route path="/leagues" element={<LeaguePage theme={theme} />} />
+                                    <Route path="/leagues" element={<LeaguePage theme={theme} showUsernameColor={showUsernameColor} />} />
 
                                     <Route path="/leagues/submit" element={<LeagueSubmissionPage />} />
+
+                                    <Route path="/leagues/bracket" element={<BracketPage theme={theme} showUsernameColor={showUsernameColor} />} />
 
                                     <Route
                                         path="/new_submission"

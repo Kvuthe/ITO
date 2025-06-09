@@ -1,4 +1,4 @@
-from models import User, Submission
+from models import User, Submission, LeagueRun
 from flask import jsonify
 import datetime
 import requests
@@ -96,6 +96,45 @@ def update_submission_rankings(session, category, chapter, sub_chapter):
 
         # Assign points based on reverse ranking
         submission.points = total_submissions - submission.rank + 1
+
+    session.commit()
+
+def update_league_rankings(session, season, week, level):
+    """ Updates all the individual league run rankings after a new submission is made.
+    Assigns ranks and points where last gets 1 point, 2nd last gets 2 points, etc.
+
+    :param session: database connection
+    :param season: season when submitted
+    :param week: week number of submission
+    :param level: level number of submission
+    """
+
+    runs = (
+        session.query(LeagueRun)
+        .filter(LeagueRun.season == season,
+                LeagueRun.week == week,
+                LeagueRun.level == level)
+        .order_by(LeagueRun.time_complete.asc())
+        .all()
+    )
+
+    total_runs = len(runs)
+    prev_time = None
+    prev_rank = 0
+    count_same_time = 1
+
+    for run in runs:
+        if run.time_complete == prev_time:
+            run.rank = prev_rank
+            count_same_time += 1
+        else:
+            run.rank = prev_rank + count_same_time
+            prev_rank = run.rank
+            prev_time = run.time_complete
+            count_same_time = 1
+
+        # Assign points based on reverse ranking
+        run.points = total_runs - run.rank + 1
 
     session.commit()
 

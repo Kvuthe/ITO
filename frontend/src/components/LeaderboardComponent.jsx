@@ -650,18 +650,18 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
                                                                         <TableCell className="pl-4 text-left font-poppins">{getRankDisplay(run.rank)}</TableCell>
                                                                         <TableCell
                                                                             className={`
-                                            font-poppins
-                                            hover:underline
-                                            ${themeString}
-                                            ${showUsernameColor ? "" : "text-tBase"}
-                                        `}
+                                                                                font-poppins
+                                                                                hover:underline
+                                                                                ${themeString}
+                                                                                ${showUsernameColor ? "" : "text-tBase"}
+                                                                            `}
                                                                             style={showUsernameColor ? { color: run.username_color } : {}}
                                                                         >
-                                        <span
-                                            className={`fi fi-${run.user_flag.toLowerCase()} ml-4 mr-1`}
-                                            title={run.user_flag}
-                                            style={{ fontSize: '1rem' }}
-                                        />
+                                                                            <span
+                                                                                className={`fi fi-${run.user_flag.toLowerCase()} ml-4 mr-1`}
+                                                                                title={run.user_flag}
+                                                                                style={{ fontSize: '1rem' }}
+                                                                            />
                                                                             <Link
                                                                                 to={`/profile/${run.user}`}
                                                                             >

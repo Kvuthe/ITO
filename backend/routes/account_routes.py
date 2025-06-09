@@ -7,8 +7,9 @@ import datetime
 from app import app
 from models import User, Submission, LeagueRun
 from routes.helpers import (ito_api_response, get_single_entry, get_all_list, update_submission_rankings, \
-                            update_player_scores, convert_time_to_int, organize_submissions, get_user_categories, categories_to_bits, \
-                            extract_time_components, get_first_place_run, notify_discord_bot, convert_int_to_time)
+                            update_player_scores, convert_time_to_int, organize_submissions, get_user_categories, \
+                            categories_to_bits, extract_time_components, get_first_place_run, notify_discord_bot, \
+                            convert_int_to_time, update_league_rankings)
 from routes.auth_routes import token_auth
 from session import db_session
 
@@ -377,17 +378,17 @@ def create_league_submission(session):
         week = data.get('week')
         level = data.get('level')
         video_url = data.get('video_url')
-        print(data)
 
         season = 'su_25'
         time_int = convert_time_to_int(time_milliseconds + "0", time_seconds, time_minutes)
-        print(time_int)
 
         new_league_run = LeagueRun(date=datetime.datetime.now(), user_id=curr_user.id, season=season, week=week,
                                    level=level, video_url=video_url, time_complete=time_int)
 
         session.add(new_league_run)
         session.commit()
+
+        update_league_rankings(session, season, week, level)
 
         return ito_api_response(success=True, data=None, message="League submission created", status_code=200)
     except Exception as error:

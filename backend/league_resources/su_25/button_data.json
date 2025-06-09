@@ -1,24 +1,85 @@
 {
   "week_1": {
-    "1" : {
-      "name": "Biting The Dust",
+    "levels": {
+      "1" : {
+      "name": "Fast Ropes",
       "category": "Any%",
       "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "2": {
+        "name": "Backbike",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "3": {
+        "name": "Winter Village",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "4": {
+        "name": "Hopscotch Blocks",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      }
     },
-    "2": {
-      "name": "Biting The Dust 2",
+    "open": true,
+    "currently_running": true
+  },
+  "week_2": {
+    "levels": {
+      "1" : {
+      "name": "Winter Village",
       "category": "Any%",
       "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "2": {
+        "name": "Fresh Air",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "3": {
+        "name": "BTI Wall Climb",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "4": {
+        "name": "Depths Intro",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      }
     },
-    "3": {
-      "name": "Biting The Dust 3",
+    "open": false,
+    "currently_running": false
+  },
+  "week_3": {
+    "levels": {
+      "1" : {
+      "name": "Wasp Skip OOB",
       "category": "Any%",
       "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "2": {
+        "name": "Fast Ropes",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "3": {
+        "name": "Deeply Rooted Wall Climb",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      },
+      "4": {
+        "name": "BTD Wall Climb",
+        "category": "Any%",
+        "background": "/league_resources/images/BitingTheDust.jpg"
+      }
     },
-    "4": {
-      "name": "Biting The Dust 4",
-      "category": "Any%",
-      "background": "/league_resources/images/BitingTheDust.jpg"
-    }
+    "open": false,
+    "currently_running": false
+  },
+  "tie_breaker": {
+    "name": "Slippery Start",
+    "category": "Any%",
+    "background": "/league_resources/images/BitingTheDust.jpg"
   }
 }

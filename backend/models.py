@@ -136,3 +136,5 @@ class LeagueRun(Base):
     time_complete = Column(Integer)
     video_url = Column(String(255))
     user_id = Column(Integer, ForeignKey('user.id'))
+    rank = Column(Integer)
+    points = Column(Integer)
