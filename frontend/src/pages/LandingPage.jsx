@@ -6,7 +6,6 @@ import MayCodyImageLight from '../assets/Light_Mode_May_Cody_Landing_Page.png';
 import MayCodyImageFunLight from '../assets/Fun_Light_Mode_May_Cody.png'
 import MayCodyImageFire from '../assets/Fire_Mode_May_Cody.png';
 import MayCodyImageStealth from '../assets/Shadow_Mode_May_Cody.png';
-import MayCodyImageItt from '../assets/Itt_Mode_May_Cody.png'
 
 const LandingPage = ({ theme }) => {
 
@@ -27,9 +26,6 @@ const LandingPage = ({ theme }) => {
             break;
         case "Stealth":
             imageSrc = MayCodyImageStealth;
-            break;
-        case "Itt":
-            imageSrc = MayCodyImageItt;
             break;
         default:
             imageSrc = MayCodyImage;

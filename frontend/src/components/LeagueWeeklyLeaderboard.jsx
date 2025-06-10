@@ -418,7 +418,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                                                 <TableHead className="text-tDarkBg font-poppins text-right">Date</TableHead>
                                             </TableRow>
                                         </TableHeader>
-                                        <TableBody className="bg-fgThird">
+                                        <TableBody>
                                             {leaderboardData.map((player, index) => (
                                                 <React.Fragment key={index}>
                                                     <TableRow
