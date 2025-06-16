@@ -35,33 +35,45 @@
       }
     },
     "open": true,
-    "currently_running": true
+    "currently_running": false
   },
   "week_2": {
     "levels": {
       "1" : {
-      "name": "Winter Village",
+      "name": "BTI Wall Climb",
       "category": "Any%",
-      "background": "/league_resources/images/BitingTheDust.jpg"
+      "background": "/league_resources/images/BTIWallClimb.png",
+      "Timing Start": "CP Entry (No Cutscene)",
+      "Timing End": "Cutscene",
+      "Extra Info": ""
       },
       "2": {
-        "name": "Fresh Air",
+        "name": "Green Fingers",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/GreenFingers.png",
+        "Timing Start": "CP Intro_NoCutscene",
+        "Timing End": "Interact with Spa Door",
+        "Extra Info": "Time ends on the first frame of the \"Partner Indicator\" disappears off screen\n\nThis run follows the Any% route, however since there is no clear way to confirm CP progression please make a concerted effort to enter each CP volume."
       },
       "3": {
-        "name": "BTI Wall Climb",
-        "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
-      },
-      "4": {
         "name": "Depths Intro",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/DepthsIntro.png",
+        "Timing Start": "CP MineIntroNoCutscene",
+        "Timing End": "RCP Yellow Box",
+        "Extra Info": ""
+      },
+      "4": {
+        "name": "Warming Up",
+        "category": "Any%",
+        "background": "/league_resources/images/WarmingUp.png",
+        "Timing Start": "CP Gate",
+        "Timing End": "Within Magnet Range",
+        "Extra Info": "Time ends on first frame your within magnet interact range."
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "week_3": {
     "levels": {
