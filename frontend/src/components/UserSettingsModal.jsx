@@ -48,7 +48,7 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
         'is', 'ie', 'it', 'lv', 'li', 'lt', 'lu', 'mk', 'mt', 'md',
         'mc', 'me', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sm', 'rs',
         'sk', 'si', 'es', 'se', 'ch', 'ua', 'gb', 'va', 'ye', 'jp',
-        'kr', 'cn', 'in'
+        'kr', 'cn', 'in', 'au', 'nz'
     ];
 
     const handleCategoryChange = (e) => {
