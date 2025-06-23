@@ -73,33 +73,45 @@
       }
     },
     "open": true,
-    "currently_running": true
+    "currently_running": false
   },
   "week_3": {
     "levels": {
       "1" : {
-      "name": "Wasp Skip OOB",
+      "name": "Slippery Start",
       "category": "Any%",
-      "background": "/league_resources/images/BitingTheDust.jpg"
+      "background": "/league_resources/images/SlipperyStart.png",
+      "Timing Start": "From Interact",
+      "Timing End": "On Landing/Death",
+      "Extra Info": "Timing starts the frame the interact prompt disappears off your screen. Timing stops at first frame of either the landing or death animation. "
       },
       "2": {
-        "name": "Fast Ropes",
+        "name": "BTD Wall Climb",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/BTDWallClimb.png",
+        "Timing Start": "CP VacuumNoIntro",
+        "Timing End": "RCP Near Weight",
+        "Extra Info": ""
       },
       "3": {
         "name": "Deeply Rooted Wall Climb",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/DeeplyRootedWallClimb.png",
+        "Timing Start": "CP Entry or Entry (No Cutscene)",
+        "Timing End": "RCP @ Save",
+        "Extra Info": "If starting from \"Entry\" make sure your are doing using \"Experimental new timer that 'removes' ping\" to remove your CS time"
       },
       "4": {
-        "name": "BTD Wall Climb",
+        "name": "Wasp Skip OOB",
         "category": "Any%",
-        "background": "/league_resources/images/BitingTheDust.jpg"
+        "background": "/league_resources/images/WaspSkipOOB.png",
+        "Timing Start": "MGW Tug Of War",
+        "Timing End": "Black Fadeout",
+        "Extra Info": ""
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "tie_breaker": {
     "name": "Slippery Start",

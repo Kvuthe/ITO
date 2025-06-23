@@ -89,6 +89,14 @@ const Navbar = () => {
                                 >
                                     Leaderboards
                                 </Link>
+
+                                <Link
+                                    to="/leagues"
+                                    className="w-auto text-center text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppinsBold border-colorActive border-2 font-bold"
+                                    onClick={toggleMenu}
+                                >
+                                    Leagues
+                                </Link>
                             </>
                         ) : (
                             <Link
