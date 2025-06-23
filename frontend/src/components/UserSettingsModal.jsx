@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import 'flag-icons/css/flag-icons.min.css';
 
 const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
@@ -13,6 +13,10 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
         inBounds: user?.categories?.includes('In Bounds') || false,
     });
     const [isFlagPickerOpen, setIsFlagPickerOpen] = useState(false);
+    const [error, setError] = useState('');
+    const [isSaving, setIsSaving] = useState(false);
+
+    const errorRef = useRef(null);
 
     const initialUserData = {
         username: user?.username || '',
@@ -25,6 +29,13 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
     };
 
     useEffect(() => {
+
+        if (isOpen){
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
         if (user) {
             setUsername(user.username || '');
             setSelectedFlag(user.flag || '');
@@ -37,7 +48,22 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
         setPassword('');
         setConfirmPassword('');
         setPasswordError('');
+        setError('');
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+
     }, [user, isOpen]);
+
+    useEffect(() => {
+        if (error && errorRef.current) {
+            errorRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
+    }, [error]);
 
     const flags = [
         'us', 'ca', 'mx', 'gl', 'bm', 'gt', 'hn', 'sv', 'ni', 'cr',
@@ -65,10 +91,13 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
         return true;
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (password && !validatePasswords()) {
             return;
         }
+
+        setError('');
+        setIsSaving(true);
 
         const updatedData = {};
 
@@ -97,10 +126,14 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
         }
 
         if (Object.keys(updatedData).length > 0) {
-            onSave(updatedData);
+            try {
+                await onSave(updatedData);
+            } catch (error) {
+                setError(error.message || 'An error occurred while saving your settings. Please try again.');
+            }
         }
 
-        onClose();
+        setIsSaving(false);
     };
 
     if (!isOpen) return null;
@@ -110,7 +143,7 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
             <div className="absolute inset-0" onClick={onClose}></div>
 
             <div
-                className="bg-fgPrimary rounded-lg w-full max-w-md flex flex-col relative z-10 max-h-[600px] overflow-y-auto overflow-x-hidden"
+                className="bg-fgPrimary rounded-lg w-full max-w-md flex flex-col relative z-10 max-h-[800px] overflow-y-auto overflow-x-hidden"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="absolute top-2 right-2 z-60">
@@ -129,6 +162,16 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
 
                 <div className="p-6 pt-10">
                     <h2 className="text-2xl text-center text-tBase font-poppins mb-6">Edit Profile</h2>
+
+                    {/* Error Message */}
+                    {error && (
+                        <div
+                            ref={errorRef}
+                            className="bg-fgThird border border-red-400 text-tBase px-4 py-3 rounded relative"
+                        >
+                            {error}
+                        </div>
+                    )}
 
                     <input type="text" name="fakeUsername" autoComplete="off" style={{display: 'none'}}/>
                     <input type="password" name="fakePassword" autoComplete="off" style={{display: 'none'}}/>
@@ -267,14 +310,16 @@ const UserSettingsModal = ({ isOpen, onClose, user, onSave }) => {
                             <button
                                 onClick={onClose}
                                 className="w-1/2 bg-fgThird font-poppins text-tBase hover:bg-fgSecondary hover:text-tDarkBg p-2 rounded"
+                                disabled={isSaving}
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={handleSave}
-                                className="w-1/2 bg-colorActive text-tActive hover:bg-fgSecondary hover:text-tDarkBg font-poppins p-2 rounded"
+                                disabled={isSaving}
+                                className="w-1/2 bg-colorActive text-tActive hover:bg-fgSecondary hover:text-tDarkBg font-poppins p-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Save Changes
+                                {isSaving ? 'Saving...' : 'Save Changes'}
                             </button>
                         </div>
                     </div>

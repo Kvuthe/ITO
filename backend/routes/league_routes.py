@@ -54,8 +54,6 @@ def get_buttons_leaderboard(session, season):
 
                     data_to_return[week]['levels'][level]['players'] = list_of_players
 
-        print(data_to_return)
-
         return ito_api_response(success=True, status_code=200, data=data_to_return, message='success')
 
     except Exception as e:
@@ -86,8 +84,6 @@ def get_leagues_leaderboard(session, season, week, level):
             run_data['user_flag'] = run.user.flag
             run_data['username_color'] = run.user.username_color
             runs.append(run_data)
-
-        print("Runs", runs)
 
         return ito_api_response(success=True, status_code=200, data=runs, message='success')
 

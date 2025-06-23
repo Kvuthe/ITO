@@ -99,13 +99,23 @@ const Navbar = () => {
                                 </Link>
                             </>
                         ) : (
-                            <Link
-                                to="/itt"
+                            <>
+                                <Link
+                                    to="/itt"
+                                    className="w-1/2 text-center text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppinsBold border-colorActive border-2 font-bold"
+                                    onClick={toggleMenu}
+                                >
+                                    Leaderboards
+                                </Link>
+
+                                <Link
+                                to="/leagues"
                                 className="w-1/2 text-center text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppinsBold border-colorActive border-2 font-bold"
                                 onClick={toggleMenu}
-                            >
-                                Leaderboards
-                            </Link>
+                                >
+                                    Leagues
+                                </Link>
+                            </>
                         )}
                     </div>
                 )}

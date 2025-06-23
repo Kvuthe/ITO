@@ -4,6 +4,7 @@ import datetime
 import requests
 from datetime import timedelta
 import time
+import re
 import threading
 
 def calculate_timeframe_score(user, time_frame, category):
@@ -311,17 +312,6 @@ def ito_api_response(success, message, data=None, status_code=200, error=None):
 
     return jsonify(response), status_code
 
-# Password reset route
-# @app.route('/api/reset', methods=['GET'])
-# def get_routes():
-#
-#     password = "test1234"
-#     salt = bcrypt.gensalt()
-#     hash_password = hashpw(password.encode('utf-8'), salt).decode('utf-8')
-#     print(hash_password)
-#
-#     return hash_password, 200
-
 
 def organize_submissions(submissions):
     organized_data = {}
@@ -371,6 +361,76 @@ def categories_to_bits(category_list):
         category_bits |= 2
 
     return category_bits
+
+
+def validate_username_whitelist(username):
+    """ Whitelist for usernames
+
+    :param username: str of username to be checked
+    :return: tuple of username validity and string of error message
+    """
+
+    if not username:
+        return False, "Username is required"
+
+    username = username.strip()
+
+    if len(username) > 120:
+        return False, f"Username must be no more than 120 characters long"
+
+    whitelist_pattern = r'^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9]|[a-zA-Z0-9]*)$'
+
+    if not re.match(whitelist_pattern, username):
+        return False, "Username can only contain letters, numbers, underscores, hyphens, and periods. Must start and end with a letter or number."
+
+    reserved_words = {
+        'admin', 'administrator', 'mod', 'moderator', 'support', 'help',
+        'system', 'bot', 'api', 'root', 'user', 'guest', 'anonymous',
+        'null', 'undefined', 'delete', 'removed', 'banned', 'suspended',
+        'official', 'staff', 'team', 'service', 'account', 'profile',
+        'settings', 'config', 'test', 'demo', 'sample', 'example'
+    }
+
+    if username.lower() in reserved_words:
+        return False, "This username is reserved and cannot be used"
+
+    inappropriate_patterns = [
+        r'fuck|shit|damn|bitch|ass|sex|porn|xxx',
+        r'admin\d+|mod\d+|staff\d+',
+        r'test\d+|demo\d+|sample\d+'
+    ]
+
+    for pattern in inappropriate_patterns:
+        if re.search(pattern, username, re.IGNORECASE):
+            return False, "Username contains inappropriate content"
+
+    return True, "Username is valid"
+
+
+def is_username_available(username, session, current_user_id=None):
+    """ Check if a username is available
+
+    :param username: str of username to be checked
+    :param session: database session
+    :param current_user_id: id of the current user
+    :return: tuple of username validity and string of error message
+    """
+
+    is_valid, error_msg = validate_username_whitelist(username)
+    if not is_valid:
+        return False, error_msg
+
+    existing_user = session.query(User).filter(
+        User.username.ilike(username)
+    ).first()
+
+    if existing_user:
+        if current_user_id and existing_user.id == current_user_id:
+            return True, "Username is available"
+        else:
+            return False, "Username is already taken"
+
+    return True, "Username is available"
 
 
 def get_first_place_run(session, category, chapter, sub_chapter):

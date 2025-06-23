@@ -101,7 +101,7 @@ function App() {
                                         }
                                     />
 
-                                    <Route path="/mod_submission" element={<SubmissionModPage />} />
+                                    {/*<Route path="/mod_submission" element={<SubmissionModPage />} />*/}
 
                                     <Route path="*" element={<Navigate to="/" replace />} />
                                 </Routes>

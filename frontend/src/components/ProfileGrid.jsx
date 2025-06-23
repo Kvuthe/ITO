@@ -507,20 +507,28 @@ const ProfileGrid = ({ username, showUsernameColor }) => {
     };
 
     const handleSaveChanges = async (updatedData) => {
-        try {
-            const response = await api.post('/me/edit', updatedData);
-            if (response.ok) {
-                const updatedUser = { ...user.user, ...updatedData };
-                user.setUser(updatedUser);
-                setIsSettingsModalOpen(false);
-                if (updatedData.username && updatedData.username !== user.user.username) {
-                    navigate(`/profile/${updatedData.username}`);
-                }
-            } else {
-                throw new Error('Failed to update profile');
+        const response = await api.post('/me/edit', updatedData);
+
+        if (response.ok) {
+            const updatedUser = { ...user.user, ...updatedData };
+            user.setUser(updatedUser);
+            setIsSettingsModalOpen(false);
+            if (updatedData.username && updatedData.username !== user.user.username) {
+                navigate(`/profile/${updatedData.username}`);
             }
-        } catch (error) {
-            console.error('Error updating profile:', error);
+        } else {
+            // Extract error message from response if available
+            let errorMessage = 'Failed to update profile';
+
+            if (response.body?.message) {
+                errorMessage = response.body.message;
+            } else if (response.body?.error) {
+                errorMessage = response.body.error;
+            } else if (response.statusText) {
+                errorMessage = `Failed to update profile: ${response.statusText}`;
+            }
+
+            throw new Error(errorMessage);
         }
     };
 

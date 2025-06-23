@@ -9,7 +9,7 @@ from models import User, Submission, LeagueRun
 from routes.helpers import (ito_api_response, get_single_entry, get_all_list, update_submission_rankings, \
                             update_player_scores, convert_time_to_int, organize_submissions, get_user_categories, \
                             categories_to_bits, extract_time_components, get_first_place_run, notify_discord_bot, \
-                            convert_int_to_time, update_league_rankings)
+                            convert_int_to_time, update_league_rankings, is_username_available)
 from routes.auth_routes import token_auth
 from session import db_session
 
@@ -33,6 +33,11 @@ def create_account(session):
         if existing_account:
             return ito_api_response(success=False, message='Username or Email already used', status_code=400)
 
+        valid, error_message = is_username_available(data['username'], session)
+
+        if not valid:
+            return ito_api_response(success=False, message=error_message, status_code=400)
+
         new_account = User(username=username, email=email.lower(), creation_date=datetime.datetime.now(), score=0, role=0, lb_pref=3, flag='us')
         new_account.generate_password_hash(password)
 
@@ -53,33 +58,43 @@ def create_account(session):
 @authenticate(token_auth)
 def edit_account(session):
 
-    curr_user = token_auth.current_user()
+    try:
 
-    user_pointer = session.query(User).filter_by(id=curr_user.id).first()
+        curr_user = token_auth.current_user()
 
-    data = request.get_json()
+        user_pointer = session.query(User).filter_by(id=curr_user.id).first()
 
-    print(data)
+        data = request.get_json()
 
-    if "categories" in data:
-        user_pointer.lb_pref = categories_to_bits(data['categories'])
-    if "password" in data:
-        user_pointer.generate_password_hash(data['password'])
-    if "flag" in data:
-        user_pointer.flag = data['flag']
-    if "username" in data:
-        user_pointer.username = data['username']
-    if "username_color" in data:
-        user_pointer.username_color = data['username_color']
+        if "categories" in data:
+            user_pointer.lb_pref = categories_to_bits(data['categories'])
+        if "password" in data:
+            user_pointer.generate_password_hash(data['password'])
+        if "flag" in data:
+            user_pointer.flag = data['flag']
+        if "username" in data:
 
-    return_data = get_single_entry(user_pointer)
+            valid, error_message = is_username_available(data['username'], session, curr_user.id)
 
-    return_data['categories'] = get_user_categories(return_data['lb_pref'])
-    return_data.pop('password')
+            if not valid:
+                return ito_api_response(success=False, message=error_message, status_code=400)
 
-    session.commit()
+            user_pointer.username = data['username']
+        if "username_color" in data:
+            user_pointer.username_color = data['username_color']
 
-    return ito_api_response(success=True, data=return_data, message='Account edited successfully', status_code=200)
+        return_data = get_single_entry(user_pointer)
+
+        return_data['categories'] = get_user_categories(return_data['lb_pref'])
+        return_data.pop('password')
+
+        session.commit()
+
+        return ito_api_response(success=True, data=return_data, message='Account edited successfully', status_code=200)
+
+    except Exception as error:
+        print(error)
+        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}", error=str(error), status_code=500)
 
 
 @app.route('/api/me', methods=['GET'])
@@ -231,8 +246,7 @@ def create_submission(session):
         if (not chapter or not sub_chapter or not video_url or not category
              or time_seconds is None or time_milliseconds is None or time_minutes is None):
             print(chapter, sub_chapter, video_url, category, time_seconds, time_milliseconds, time_minutes)
-            return ito_api_response(success=False, message='Missing required fields', status_code=400)
-
+            return ito_api_response(success=False, message='Missing required information', status_code=400)
 
         game_title = "itt"
 
@@ -397,6 +411,9 @@ def create_league_submission(session):
         week = data.get('week')
         level = data.get('level')
         video_url = data.get('video_url')
+
+        if time_milliseconds is None or time_seconds is None or time_minutes is None or week is None or level is None or video_url is None:
+            return ito_api_response(success=False, message='Please fill in all the fields', status_code=400)
 
         season = 'su_25'
         if len(time_milliseconds) < 3:

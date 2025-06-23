@@ -142,7 +142,7 @@ const SubmissionPage = () => {
                     {error && (
                         <>
                             <div className="bg-fgThird border border-red-400 text-tBase px-4 py-3 rounded relative">
-                                Failed to submit run
+                                {error}
                             </div> <div className="pb-4"></div>
                         </>
                     )}
