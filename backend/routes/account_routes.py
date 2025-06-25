@@ -9,7 +9,7 @@ from models import User, Submission, LeagueRun
 from routes.helpers import (ito_api_response, get_single_entry, get_all_list, update_submission_rankings, \
                             update_player_scores, convert_time_to_int, organize_submissions, get_user_categories, \
                             categories_to_bits, extract_time_components, get_first_place_run, notify_discord_bot, \
-                            convert_int_to_time, update_league_rankings, is_username_available)
+                            convert_int_to_time, update_league_rankings, is_username_available, format_chapter, format_subchapter)
 from routes.auth_routes import token_auth
 from session import db_session
 
@@ -291,16 +291,21 @@ def create_submission(session):
 
         first_place_after = get_first_place_run(session, category, chapter, sub_chapter)
 
-        print(first_place_after, first_place_before)
+        ito_base_url = "https://ito-website-frontend.onrender.com/itt?view=category&game=itt"
+
+        url = ito_base_url + f"&runCategory={category.capitalize()}25"
+        url = url + f"&chapter={format_chapter(chapter)}"
+        url = url + f"&subChapter={format_subchapter(sub_chapter)}"
 
         if first_place_before is None:
+
             record_data = {
                 'username': curr_user.username,
                 'chapter': chapter,
                 'sub_chapter': sub_chapter,
                 'category': category,
                 'time_complete': convert_int_to_time(first_place_after.time_complete),
-                'video_url': first_place_after.video_url,
+                'video_url': url,
                 'previous_record_time': None,
                 'improvement_ms': None
             }

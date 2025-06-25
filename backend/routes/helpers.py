@@ -433,6 +433,23 @@ def is_username_available(username, session, current_user_id=None):
     return True, "Username is available"
 
 
+def format_chapter(chapter):
+    """ Reformats the chapter field of a submission to be url friendly
+
+        :param chapter: str of the chapter to be reformatted
+        :return: string of the url friendly chapter
+    """
+    return chapter.title().replace(" ", "+")
+
+def format_subchapter(subchapter):
+    """ Reformats the subchapter field of a submission to be url friendly
+
+        :param subchapter: str of the subchapter to be reformatted
+        :return: string of the url friendly subchapter
+    """
+    return subchapter.title().replace(" ", "+")
+
+
 def get_first_place_run(session, category, chapter, sub_chapter):
     """Get the current first place run for a category/chapter/sub_chapter"""
     try:
