@@ -321,7 +321,7 @@ def create_submission(session):
                 'sub_chapter': sub_chapter,
                 'category': category,
                 'time_complete': convert_int_to_time(first_place_after.time_complete),
-                'video_url': first_place_after.video_url,
+                'video_url': url,
                 'previous_record_time': convert_int_to_time(first_place_before.time_complete),
                 'improvement_ms': first_place_before.time_complete - first_place_after.time_complete
             }
