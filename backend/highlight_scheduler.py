@@ -19,7 +19,7 @@ def rotate_highlighted_submissions(session):
             submission.highlighted = False
 
         new_highlights = session.query(Submission) \
-            .filter(Submission.rank == 1) \
+            .filter(Submission.rank == 1, Submission.voided == False) \
             .order_by(func.random()) \
             .limit(3) \
             .all()
