@@ -293,7 +293,7 @@ def create_submission(session):
 
         ito_base_url = "https://ito-website-frontend.onrender.com/itt?view=category&game=itt"
 
-        url = ito_base_url + f"&runCategory={category.capitalize()}25"
+        url = ito_base_url + f"&runCategory={category.capitalize()}"
         url = url + f"&chapter={format_chapter(chapter)}"
         url = url + f"&subChapter={format_subchapter(sub_chapter)}"
 
