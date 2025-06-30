@@ -111,7 +111,7 @@
       }
     },
     "open": true,
-    "currently_running": true
+    "currently_running": false
   },
   "tie_breaker": {
     "name": "Slippery Start",

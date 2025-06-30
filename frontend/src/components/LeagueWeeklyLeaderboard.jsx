@@ -9,7 +9,7 @@ import { Info } from 'lucide-react';
 
 export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor }) {
     const [selectedLevel, setSelectedLevel] = useState(1);
-    const [selectedWeek, setSelectedWeek] = useState(3);
+    const [selectedWeek, setSelectedWeek] = useState(1);
     const [leagueButtons, setLeagueButtons] = useState([]);
     const [leaderboardData, setLeaderboardData] = useState([]);
     const [loading, setLoading] = useState(false);
