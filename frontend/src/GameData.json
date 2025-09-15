@@ -134,7 +134,7 @@
             "Winter Village": {
               "Timing Start": "CP Town Entry (No Cutscene)",
               "Timing End": "Bobsled Grab",
-              "Extra Info": ""
+              "Extra Info": "Rail storage is banned from being used in this ITO."
             },
             "Bti Wall Climb": {
               "Timing Start": "CP Entry (No Cutscene)",

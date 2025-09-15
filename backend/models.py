@@ -41,7 +41,6 @@ class User(Base):
         """ Compares the entered password with the password stored in the database and returns true if they match
 
         :param entered_password: password entered by the user trying to log in
-        :param stored_password: password stored in the database associated with the user trying to log in
         :return boolean: True if passwords match
         """
 

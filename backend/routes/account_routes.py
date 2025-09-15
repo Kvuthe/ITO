@@ -231,8 +231,6 @@ def create_submission(session):
 
         data = request.get_json()
 
-        print(data)
-
         date = data.get('submissionDate')
         chapter = data.get('chapter').lower()
         sub_chapter = data.get('sub_chapter').lower()
@@ -310,8 +308,6 @@ def create_submission(session):
                 'improvement_ms': None
             }
 
-            print(f"Notifying Discord of first time record: {record_data}")
-
             # Send notification to Discord bot via webhook
             notify_discord_bot(record_data)
         elif first_place_after.id != first_place_before.id:
@@ -325,8 +321,6 @@ def create_submission(session):
                 'previous_record_time': convert_int_to_time(first_place_before.time_complete),
                 'improvement_ms': first_place_before.time_complete - first_place_after.time_complete
             }
-
-            print(f"Notifying Discord of new record: {record_data}")
 
             # Send notification to Discord bot via webhook
             notify_discord_bot(record_data)
