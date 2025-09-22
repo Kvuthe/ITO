@@ -301,7 +301,7 @@
           },
           "Fidget Spinner": {
             "Timing Start": "CP Fidget Spinners",
-            "Timing End": "Interact at the end filled up",
+            "Timing End": "Interact prompt disappearing",
             "Extra Info": ""
           },
           "Kaleidoscope End": {

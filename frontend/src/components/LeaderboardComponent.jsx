@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useApi } from '../contexts/ApiProvider';
-import gameData from '../GameData.json';
 import {
     convertToEmbedUrl,
     getRankDisplay,
@@ -51,6 +50,8 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
     const searchParams = new URLSearchParams(location.search);
 
     const [isInitialLoad, setIsInitialLoad] = useState(true);
+    const [gameData, setGameData] = useState(null);
+    const [gameDataLoading, setGameDataLoading] = useState(true);
 
     const [view, setView] = useState(() => {
         const urlView = searchParams.get('view');
@@ -88,6 +89,28 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
     const [reportMessage, setReportMessage] = useState("");
     const [reportedRun, setReportedRun] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const fetchGameData = async () => {
+        setGameDataLoading(true);
+        try {
+            const response = await api.get('/game/data');
+            if (response.ok) {
+                setGameData(response.body.data);
+            } else {
+                console.error("Error fetching game data:", response.status);
+                setError("Failed to fetch game data");
+            }
+        } catch (error) {
+            console.error("Error fetching game data:", error);
+            setError("Failed to fetch game data");
+        } finally {
+            setGameDataLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchGameData();
+    }, [])
 
     const updateUrlParams = (newParams) => {
         const currentParams = new URLSearchParams(location.search);
@@ -149,40 +172,19 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
     };
 
     const getCategories = () => {
-        if (selectedGame && gameData[selectedGame] && gameData[selectedGame].categories) {
-            return Object.keys(gameData[selectedGame].categories);
-        }
-        return [];
+        return Object.keys(gameData?.[selectedGame]?.categories ?? {});
     };
 
     const getChapters = () => {
-        if (selectedGame && selectedCategory &&
-            gameData[selectedGame].categories &&
-            gameData[selectedGame].categories[selectedCategory]) {
-            return Object.keys(gameData[selectedGame].categories[selectedCategory]);
-        }
-        return [];
+        return Object.keys(gameData?.[selectedGame]?.categories?.[selectedCategory] ?? {});
     };
 
     const getSubChapters = () => {
-        if (selectedGame && selectedCategory && selectedChapter &&
-            gameData[selectedGame].categories &&
-            gameData[selectedGame].categories[selectedCategory] &&
-            gameData[selectedGame].categories[selectedCategory][selectedChapter]) {
-            return Object.keys(gameData[selectedGame].categories[selectedCategory][selectedChapter]);
-        }
-        return [];
+        return Object.keys(gameData?.[selectedGame]?.categories?.[selectedCategory]?.[selectedChapter] ?? {});
     };
 
     const getSubChapterDetails = () => {
-        if (selectedGame && selectedCategory && selectedChapter && selectedSubChapter &&
-            gameData[selectedGame].categories &&
-            gameData[selectedGame].categories[selectedCategory] &&
-            gameData[selectedGame].categories[selectedCategory][selectedChapter] &&
-            gameData[selectedGame].categories[selectedCategory][selectedChapter][selectedSubChapter]) {
-            return gameData[selectedGame].categories[selectedCategory][selectedChapter][selectedSubChapter];
-        }
-        return null;
+        return gameData?.[selectedGame]?.categories?.[selectedCategory]?.[selectedChapter]?.[selectedSubChapter] ?? null;
     };
 
     const fetchChapterLeaderboardData = async () => {
@@ -258,6 +260,7 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
     };
 
     const handleChapterChange = (chapter) => {
+        console.log("CALLED CHANGE CHAPTER");
         setSelectedChapter(chapter);
         setChapterLeaderboardData(null);
         setExpandedRun(null);
@@ -266,6 +269,7 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
             const subChapters = getSubChapters();
             const firstSubChapter = subChapters.length > 0 ? subChapters[0] : "";
             setSelectedSubChapter(firstSubChapter);
+            console.log("HIT", selectedSubChapter);
 
             updateUrlParams({
                 chapter: chapter,
@@ -278,28 +282,19 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
 
     const handleSubChapterChange = (subChapter) => {
         setSelectedSubChapter(subChapter);
+        console.log(subChapter);
         setExpandedRun(null);
 
         updateUrlParams({ subChapter: subChapter });
     };
 
     const getChaptersForCategory = (categoryName) => {
-        if (selectedGame && categoryName &&
-            gameData[selectedGame].categories &&
-            gameData[selectedGame].categories[categoryName]) {
-            return Object.keys(gameData[selectedGame].categories[categoryName]);
-        }
-        return [];
+        console.log("DATA", gameData);
+        return Object.keys(gameData?.[selectedGame]?.categories?.[categoryName] ?? {});
     };
 
     const getSubChaptersForChapter = (categoryName, chapterName) => {
-        if (selectedGame && categoryName && chapterName &&
-            gameData[selectedGame].categories &&
-            gameData[selectedGame].categories[categoryName] &&
-            gameData[selectedGame].categories[categoryName][chapterName]) {
-            return Object.keys(gameData[selectedGame].categories[categoryName][chapterName]);
-        }
-        return [];
+        return Object.keys(gameData?.[selectedGame]?.categories?.[categoryName]?.[chapterName] ?? {});
     };
 
     const handleTimeframeChange = (newTimeframe) => {
@@ -415,7 +410,29 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
         }
     }, [selectedChapter, isInitialLoad]);
 
-    const subChapterDetails = getSubChapterDetails();
+    if (gameDataLoading) {
+        return (
+            <div className="w-full max-w-3xl mx-auto">
+                <div className="text-center py-8 text-tBase font-poppins">
+                    Loading game data...
+                </div>
+            </div>
+        );
+    }
+
+    if (!gameData || !gameData[selectedGame]) {
+        return (
+            <div className="w-full max-w-3xl mx-auto">
+                <div className="text-center py-8 text-tBase font-poppins">
+                    No game data available for "{selectedGame}"
+                    <br/>
+                    <small>Available games: {gameData ? Object.keys(gameData).join(', ') : 'None'}</small>
+                </div>
+            </div>
+        );
+    }
+
+        const subChapterDetails = getSubChapterDetails();
 
     return (
         <div className="w-full max-w-3xl mx-auto">
@@ -594,7 +611,6 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
 
                                     <div className="border-b mb-4 border-b-bBase"></div>
 
-                                    {/* Sub-chapter buttons */}
                                     {selectedChapter && (
                                         <div className="flex flex-wrap gap-2 mb-6">
                                             {getSubChapters().map(subChapter => (
@@ -615,8 +631,9 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
                                         <div className="text-center py-6 text-tBase">Please select a sub chapter</div>
                                     ) : (
                                         <div className="mt-4 space-y-4">
-                                            <div className="bg-fgThird rounded-lg p-4">
-                                                {subChapterDetails && (
+                                            {subChapterDetails && (
+                                                <div className="bg-fgThird rounded-lg p-4">
+
                                                     <div className="space-y-2 text-sm">
                                                         <p className="text-tBase font-poppins">
                                                             <span>Timing Start:</span> <i>{subChapterDetails["Timing Start"]}</i>
@@ -630,9 +647,8 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
                                                             </p>
                                                         )}
                                                     </div>
-                                                )}
-                                            </div>
-
+                                                </div>
+                                            )}
                                             {loading ? (
                                                 <div className="text-center font-poppins text-tBase">Loading leaderboard data...</div>
                                             ) : error ? (
@@ -725,7 +741,7 @@ const LeaderboardComponent = ({ user, themeString, showUsernameColor = {} }) => 
                                                     </Table>
                                                 </div>
                                             ) : (
-                                                <div className="text-center py-6 text-tBase">Select a sub-chapter to view leaderboard data</div>
+                                                <div className="text-center py-6 text-tBase font-poppins">Select a sub-chapter to view leaderboard data</div>
                                             )}
                                         </div>
                                     )}

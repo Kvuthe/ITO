@@ -1,6 +1,7 @@
 from apifairy import authenticate
 from flask import request
 import datetime
+import json
 
 from sqlalchemy.orm import joinedload
 
@@ -10,6 +11,8 @@ from routes.helpers import ito_api_response, get_single_entry, get_submission_en
 from routes.auth_routes import token_auth
 from models import Submission, User
 from session import db_session
+
+GAME_DATA_FP = 'game_data.json'
 
 @app.route('/api/submission/report', methods=['POST'])
 @db_session
@@ -168,8 +171,6 @@ def get_verification_queue(session):
 
         return_response = get_all_list(unverified_users)
 
-        print(return_response)
-
         return ito_api_response(success=True, data=return_response, message="Successfully retrieved verification queue", status_code=200)
 
     except Exception as error:
@@ -299,3 +300,41 @@ def mod_create_submission(session):
         print(error)
         return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}",
                                 status_code=500, error=str(error))
+
+
+@app.route('/api/game/data', methods=['GET'])
+def get_game_data():
+
+    try:
+        with open(GAME_DATA_FP, 'r') as f:
+            data = json.load(f)
+
+            return ito_api_response(success=True, message="Successfully retrieved game data", data=data, status_code=200)
+    except Exception as error:
+        print(error)
+        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}", error=str(error), status_code=500)
+
+
+@app.route('/api/game/data/edit', methods=['POST'])
+@authenticate(token_auth)
+def edit_game_data():
+    try:
+
+        curr_user = token_auth.current_user()
+
+        if curr_user.role != 2:
+            return ito_api_response(success=False, message='This account is unauthorized to edit the game data', status_code=403)
+
+        new_data = request.get_json()
+
+        if not new_data:
+            return ito_api_response(success=False, message="No data provided", status_code=400)
+
+        with open(GAME_DATA_FP, 'w') as f:
+            json.dump(new_data, f, indent=2)
+
+        return ito_api_response(success=True, message="Successfully updated game data", status_code=200)
+
+    except Exception as error:
+        print(error)
+        return ito_api_response(success=False, message=f"Failed to update game data", error=str(error), status_code=500)

@@ -4,13 +4,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useApi } from '@/contexts/ApiProvider.jsx';
-import gameData from '../GameData.json';
 
 const SubmissionPage = () => {
     const api = useApi();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [gameData, setGameData] = useState(null);
+    const [gameDataLoading, setGameDataLoading] = useState(true);
     const [formOptions, setFormOptions] = useState({
         categories: [],
         chapters: [],
@@ -22,14 +23,38 @@ const SubmissionPage = () => {
     const gameTitle = 'It Takes Two';
 
     useEffect(() => {
-        const gameKey = gameTitle === 'It Takes Two' ? 'itt' : 'sf';
-        const categories = Object.keys(gameData[gameKey].categories);
+        const fetchGameData = async () => {
+            try {
+                setGameDataLoading(true);
+                const response = await api.get('/game/data');
 
-        setFormOptions(prev => ({
-            ...prev,
-            categories
-        }));
-    }, [gameTitle]);
+                if (response.ok) {
+                    setGameData(response.body.data);
+                } else {
+                    throw new Error(response.body?.message || 'Failed to fetch game data');
+                }
+            } catch (err) {
+                console.error('Error fetching game data:', err);
+                setError(`Failed to load game data: ${err.message}`);
+            } finally {
+                setGameDataLoading(false);
+            }
+        };
+
+        fetchGameData();
+    }, [api]);
+
+    useEffect(() => {
+        if (gameData && !gameDataLoading) {
+            const gameKey = gameTitle === 'It Takes Two' ? 'itt' : 'sf';
+            const categories = Object.keys(gameData[gameKey]?.categories || {});
+
+            setFormOptions(prev => ({
+                ...prev,
+                categories
+            }));
+        }
+    }, [gameData, gameDataLoading, gameTitle]);
 
     const [formData, setFormData] = useState({
         game_title: gameTitle,
@@ -41,14 +66,16 @@ const SubmissionPage = () => {
         seconds: '',
         milliseconds: '',
         description: '',
-        submissionDate: new Date().toISOString().split('T')[0] // Default to today's date
+        submissionDate: new Date().toISOString().split('T')[0]
     });
 
     const handleCategorySelect = (value) => {
         handleChange('category', value);
 
+        if (!gameData) return;
+
         const gameKey = gameTitle === 'It Takes Two' ? 'itt' : 'sf';
-        const chapters = Object.keys(gameData[gameKey].categories[value]);
+        const chapters = Object.keys(gameData[gameKey]?.categories?.[value] || {});
 
         setFormOptions(prev => ({
             ...prev,
@@ -60,8 +87,10 @@ const SubmissionPage = () => {
     const handleChapterSelect = (value) => {
         handleChange('chapter', value);
 
+        if (!gameData) return;
+
         const gameKey = gameTitle === 'It Takes Two' ? 'itt' : 'sf';
-        const subChapters = Object.keys(gameData[gameKey].categories[formData.category][value]);
+        const subChapters = Object.keys(gameData[gameKey]?.categories?.[formData.category]?.[value] || {});
 
         setFormOptions(prev => ({
             ...prev,
@@ -130,6 +159,34 @@ const SubmissionPage = () => {
             });
         }
     }, [success, error]);
+
+    // Game data loading
+    if (gameDataLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
+                <Card className="w-full max-w-xl bg-fgPrimary border-0">
+                    <CardContent className="flex items-center justify-center p-8">
+                        <div className="text-tBase font-poppins">Loading game data...</div>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
+
+    // Game data failure
+    if (!gameData && !gameDataLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
+                <Card className="w-full max-w-xl bg-fgPrimary border-0">
+                    <CardContent className="p-8">
+                        <div className="bg-fgThird border border-red-400 text-tBase px-4 py-3 rounded">
+                            {error || 'Failed to load game data'}
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-bgPrimary">

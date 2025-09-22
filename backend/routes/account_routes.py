@@ -1,6 +1,5 @@
 from flask import request
 from apifairy import authenticate
-from sqlalchemy.orm import joinedload
 from sqlalchemy import desc, or_, asc
 import datetime
 

@@ -5,6 +5,7 @@ from highlight_scheduler import setup_highlight_scheduler
 
 load_dotenv('env_prod.env')
 app = Flask(__name__)
+app.json.sort_keys = False
 
 setup_highlight_scheduler()
 

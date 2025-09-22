@@ -3,8 +3,8 @@ import SecondSvg from "@/assets/2nd.svg";
 import ThirdSvg from "@/assets/3rd.svg";
 import FourthSvg from "@/assets/4th.svg";
 
-// const BASE_API_URL = 'http://localhost:6005';
-const BASE_API_URL = 'https://ito-website.onrender.com';
+const BASE_API_URL = 'http://localhost:6005';
+// const BASE_API_URL = 'https://ito-website.onrender.com';
 
 const themeShadows = {
     Light: `
@@ -157,8 +157,22 @@ const getDaysAgo = (timestamp) => {
         return "Today";
     } else if (diffDays === 1) {
         return "Yesterday";
-    } else {
+    } else if (diffDays < 30) {
         return `${diffDays} days ago`;
+    } else if (diffDays < 365) {
+        const months = Math.floor(diffDays / 30);
+        if (months === 1) {
+            return "1 month ago";
+        } else {
+            return `${months} months ago`;
+        }
+    } else {
+        const years = Math.floor(diffDays / 365);
+        if (years === 1) {
+            return "1 year ago";
+        } else {
+            return `${years} years ago`;
+        }
     }
 };
 

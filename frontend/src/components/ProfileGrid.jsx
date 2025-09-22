@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import gameData from '../GameData.json';
 import {useApi} from "@/contexts/ApiProvider.jsx";
 import { useUser } from "@/contexts/UserProvider.jsx";
 import {Link, useNavigate} from 'react-router-dom';
@@ -345,10 +344,33 @@ const ProfileGrid = ({ username, showUsernameColor }) => {
     const [selectedRun, setSelectedRun] = useState(null);
     const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
     const [editingRun, setEditingRun] = useState(null);
+    const [gameData, setGameData] = useState({});
     const api = useApi();
     const user = useUser();
     const navigate = useNavigate();
     const isOwnProfile = user?.user?.username === username;
+
+    const fetchGameData = async () => {
+        try {
+            const endpoint = "/game/data";
+
+            const response = await api.get(endpoint);
+
+            if (response.status === 200) {
+                setGameData(response.body.data);
+            } else {
+                console.error("Error fetching user leaderboard:", response.status);
+                setError("Failed to fetch leaderboard data");
+            }
+        } catch (error) {
+            setError(error.message || "An error occurred while fetching leaderboard data.");
+            console.error("Error in user leaderboard fetch:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchGameData();
+    }, []);
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -371,10 +393,10 @@ const ProfileGrid = ({ username, showUsernameColor }) => {
     }, [username, user.user]);
 
     useEffect(() => {
-        if (selectedCategory && gameData.itt.categories[selectedCategory]) {
+        if (selectedCategory && gameData?.itt?.categories?.[selectedCategory]) {
             setChapters(Object.keys(gameData.itt.categories[selectedCategory]));
         }
-    }, [selectedCategory]);
+    }, [selectedCategory, gameData]);
 
     const handleRunClick = (run) => {
         setSelectedRun(run);

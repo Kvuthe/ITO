@@ -1,12 +1,10 @@
-from apifairy import authenticate
 from flask import request
 from sqlalchemy.orm import joinedload
 from sqlalchemy import or_, asc
-import datetime
 
 from app import app
-from routes.helpers import ito_api_response, get_single_entry, get_submission_entry, update_submission_rankings, \
-    update_player_scores, get_all_list, calculate_timeframe_score
+from routes.helpers import (ito_api_response, get_single_entry, get_submission_entry, get_all_list,
+                            calculate_timeframe_score)
 from models import Submission, User
 from session import db_session
 
@@ -198,4 +196,3 @@ def get_user_total_leaderboard_data(session):
     except Exception as error:
         print(error)
         return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}", error=str(error), status_code=500)
-
