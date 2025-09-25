@@ -1,0 +1,177 @@
+{
+  "data": {
+    "winners_bracket": {
+      "rounds": [
+        {
+          "name": "WB Round 1",
+          "matches": [
+            {
+              "id": "wb_r1_m1",
+              "team1": "Argros",
+              "team2": "Louis136r",
+              "winner": "Argros",
+              "vodUrl": "https://youtu.be/rdA5BtVIH_s?si=VirlFuQMV8FvvKyi",
+              "date": "2025-07-05",
+              "score": "3-0"
+            },
+            {
+              "id": "wb_r1_m2",
+              "team1": "Karl",
+              "team2": "Matt",
+              "winner": "Matt",
+              "vodUrl": "https://youtu.be/7qzWE1qSwMc?si=VSKFXtsGqGKLM2xY",
+              "date": "2025-07-05",
+              "score": "3-1"
+            },
+            {
+              "id": "wb_r1_m3",
+              "team1": "Daemonweave",
+              "team2": "Paymi",
+              "winner": "Daemonweave",
+              "vodUrl": "https://youtu.be/rvZMUkVUN1Y?si=bYC9WcjKRat-JC76",
+              "date": "2025-07-05",
+              "score": "3-0"
+            },
+            {
+              "id": "wb_r1_m4",
+              "team1": "Bean",
+              "team2": "Toogy",
+              "winner": "Bean",
+              "vodUrl": "https://youtu.be/KG79pue_v8U?si=QmVVJdGZnjoQgnqw",
+              "date": "2025-07-05",
+              "score": "3-1"
+            }
+          ]
+        },
+        {
+          "name": "WB Semi Finals",
+          "matches": [
+            {
+              "id": "wb_sf_m1",
+              "team1": "Argros",
+              "team2": "Matt",
+              "winner": "Argros",
+              "vodUrl": "https://youtu.be/wLzNJ81Tv18?si=NpGjJPF1AMQGI8KU",
+              "date": "2025-07-05",
+              "score": "3-1"
+            },
+            {
+              "id": "wb_sf_m2",
+              "team1": "Daemonweave",
+              "team2": "Bean",
+              "winner": "Daemonweave",
+              "vodUrl": "https://youtu.be/HJtRUsUBg6I?si=XCCcZg5TNNHyYQ3y",
+              "date": "2025-07-05",
+              "score": "3-0"
+            }
+          ]
+        },
+        {
+          "name": "WB Finals",
+          "matches": [
+            {
+              "id": "wb_f_m1",
+              "team1": "Argros",
+              "team2": "Daemonweave",
+              "winner": "Daemonweave",
+              "vodUrl": "https://youtu.be/0gocKj5iGK4?si=zVazFjlT6sIVSs1F",
+              "date": "2025-07-05",
+              "score": "3-2"
+            }
+          ]
+        }
+      ]
+    },
+    "losers_bracket": {
+      "rounds": [
+        {
+          "name": "LB Round 1",
+          "matches": [
+            {
+              "id": "lb_r1_m1",
+              "team1": "Louis136r",
+              "team2": "Karl",
+              "winner": "Karl",
+              "vodUrl": "https://youtu.be/IiQ4IPwbTxM?si=jMoxXcNru_K5-33o",
+              "date": "2025-07-05",
+              "score": "3-0"
+            },
+            {
+              "id": "lb_r1_m2",
+              "team1": "Peymi",
+              "team2": "Toogy",
+              "winner": "Toogy",
+              "vodUrl": "https://youtu.be/c76b_P953Vk?si=fAUjH5eJCC74nSUZ",
+              "date": "2025-03-17",
+              "score": "3-0"
+            }
+          ]
+        },
+        {
+          "name": "LB Round 2",
+          "matches": [
+            {
+              "id": "lb_r2_m1",
+              "team1": "Bean",
+              "team2": "Karl",
+              "winner": "Karl",
+              "vodUrl": "https://youtu.be/H6v1WFRHRss?si=cFKdfrgyOW5LbgKQ",
+              "date": "2025-07-05",
+              "score": "3-1"
+            },
+            {
+              "id": "lb_r2_m2",
+              "team1": "Matt",
+              "team2": "Toogy",
+              "winner": "Matt",
+              "vodUrl": "https://youtu.be/PotaQCuVf1s?si=jmwTkF-Ztg9_SZFp",
+              "date": "2025-07-05",
+              "score": "3-0"
+            }
+          ]
+        },
+        {
+          "name": "LB Round 3",
+          "matches": [
+            {
+              "id": "lb_r3_m1",
+              "team1": "Karl",
+              "team2": "Matt",
+              "winner": "Karl",
+              "vodUrl": "https://youtu.be/Idk4CmrdCgI?si=gVbHaWBRVOnO4rKL",
+              "date": "2025-07-05",
+              "score": "3-2"
+            }
+          ]
+        },
+        {
+          "name": "LB Finals",
+          "matches": [
+            {
+              "id": "lb_f_m1",
+              "team1": "Argros",
+              "team2": "Karl",
+              "winner": "Argros",
+              "vodUrl": "https://youtu.be/oZBV6WlZNKc?si=wWVxFS4KKS7vwzcH",
+              "date": "2025-07-05",
+              "score": "4-1"
+            }
+          ]
+        }
+      ]
+    },
+    "grand_finals": {
+      "matches": [
+        {
+          "id": "gf_m1",
+          "team1": "Daemonweave",
+          "team2": "Argros",
+          "winner": "Daemonweave",
+          "vodUrl": "https://youtu.be/4OuiSZtztZk?si=5vCB6LJCSL1kggW7",
+          "date": "2025-07-05",
+          "score": "4-0"
+        }
+      ]
+    }
+  }
+}

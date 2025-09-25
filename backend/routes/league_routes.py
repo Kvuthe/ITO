@@ -131,3 +131,17 @@ def get_leagues_total_leaderboard(session, season):
         print(e)
         return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}",
                                 status_code=500, error=str(e))
+
+@app.route('/api/leagues/<season>/results', methods=['GET'])
+def get_leagues_results(season):
+
+    try:
+        results_json_fp = f'league_resources/{season}/bracket_results.json'
+        with open(results_json_fp, 'r') as f:
+            results_json = json.load(f)
+
+        return ito_api_response(success=True, status_code=200, data=results_json.get('data'), message='success')
+    except Exception as e:
+        print(e)
+        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}",
+                                status_code=500, error=str(e))
