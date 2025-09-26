@@ -45,7 +45,7 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
         return (
             <div
                 className={`
-                    h-16 bg-fgThird rounded-lg p-2 border-0 w-36
+                    h-16 bg-fgThird rounded-lg border-0 w-36 p-1
                     ${isClickable ? 'cursor-pointer hover:opacity-90 hover:shadow-lg transition-all duration-200 hover:-translate-y-1' : ''}
                     ${isLosers ? 'border-l-4 border-l-colorActive' : 'border-l-4 border-l-colorActive'}
                     flex flex-col justify-between relative
@@ -123,13 +123,20 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                         Weeks
                     </Link>
                 </CardHeader>
+                <div className="pl-4 text-tBase font-poppins text-xs">
+                    <p>
+                        <a href="https://youtu.be/_OhgqLj3hVM" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            Click here for the full vod
+                        </a>
+                    </p>
+                </div>
                 <CardContent className="p-4">
                     <div className="mb-4">
                     </div>
 
                     <div className="w-full">
                         <div className="flex flex-col gap-6">
-                            <div className="flex gap-6 items-start">
+                        <div className="flex gap-6 items-start">
                                 {tournamentData.winners_bracket && (
                                     <div className="flex-shrink-0">
                                         <h3 className="text-lg font-bold text-tBase mb-3 text-left">
@@ -147,9 +154,9 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                                                         <div className="space-y-2">
                                                             {round.matches?.map((match, matchIndex) => (
                                                                 <React.Fragment key={match.id}>
-                                                                    <MatchComponent match={match} isLosers={false} />
+                                                                    <MatchComponent match={match} isLosers={false}/>
                                                                     {matchIndex < round.matches.length - 1 && (
-                                                                        <VerticalConnector />
+                                                                        <VerticalConnector/>
                                                                     )}
                                                                 </React.Fragment>
                                                             ))}
@@ -157,7 +164,7 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                                                     </div>
 
                                                     {roundIndex < tournamentData.winners_bracket.rounds.length - 1 && (
-                                                        <ConnectorLine />
+                                                        <ConnectorLine/>
                                                     )}
                                                 </React.Fragment>
                                             ))}
@@ -175,13 +182,13 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                                             <div className="space-y-2">
                                                 {tournamentData.grand_finals.matches?.map((match) => (
                                                     <div key={match.id} className="flex flex-col items-center">
-                                                        <MatchComponent match={match} />
+                                                        <MatchComponent match={match}/>
                                                         {match.bracket_reset && (
                                                             <>
                                                                 <div className="text-xs text-tBase my-1">
                                                                     Bracket Reset
                                                                 </div>
-                                                                <MatchComponent match={match.bracket_reset} />
+                                                                <MatchComponent match={match.bracket_reset}/>
                                                             </>
                                                         )}
                                                     </div>
@@ -209,9 +216,9 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                                                     <div className="space-y-2">
                                                         {round.matches?.map((match, matchIndex) => (
                                                             <React.Fragment key={match.id}>
-                                                                <MatchComponent match={match} isLosers={true} />
+                                                                <MatchComponent match={match} isLosers={true}/>
                                                                 {matchIndex < round.matches.length - 1 && (
-                                                                    <VerticalConnector />
+                                                                    <VerticalConnector/>
                                                                 )}
                                                             </React.Fragment>
                                                         ))}
@@ -219,7 +226,7 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                                                 </div>
 
                                                 {roundIndex < tournamentData.losers_bracket.rounds.length - 1 && (
-                                                    <ConnectorLine />
+                                                    <ConnectorLine/>
                                                 )}
                                             </React.Fragment>
                                         ))}
@@ -229,7 +236,7 @@ const TournamentBracket = ({ season = 'su_25', themeString, showUsernameColor })
                         </div>
                     </div>
 
-                    <div className="mt-4 text-center space-y-2">
+                    <div className="mt-4 text-left space-y-2">
                         <p className="text-xs text-tBase">
                             * Click on a card to watch the VOD
                         </p>
