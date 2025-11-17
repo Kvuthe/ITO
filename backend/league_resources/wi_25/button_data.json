@@ -34,8 +34,8 @@
         "Extra Info": ""
       }
     },
-    "open": true,
-    "currently_running": true
+    "open": false,
+    "currently_running": false
   },
   "week_2": {
     "levels": {

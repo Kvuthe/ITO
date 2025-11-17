@@ -172,7 +172,8 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                                 user_id: player.user_id,
                                 flag: player.user_flag || null,
                                 color: player.username_color || null,
-                                description: player.description || null
+                                description: player.description || null,
+                                points: player.points || null,
                             }));
 
                         setLeaderboardData(rankedPlayers);
@@ -201,7 +202,8 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                     date: player.date,
                     flag: player.user_flag,
                     color: player.username_color,
-                    description: player.description
+                    description: player.description,
+                    points: player.points,
                 }));
 
                 setLeaderboardData(rankedPlayers);
@@ -413,6 +415,7 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                                                 <TableHead className="text-tDarkBg font-poppins">Username</TableHead>
                                                 <TableHead className="text-tDarkBg font-poppins text-right">Time</TableHead>
                                                 <TableHead className="text-tDarkBg font-poppins text-right">Date</TableHead>
+                                                <TableHead className="text-tDarkBg font-poppins text-right">Points</TableHead>
                                             </TableRow>
                                         </TableHeader>
                                         <TableBody className="bg-fgThird">
@@ -445,6 +448,7 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                                                         </TableCell>
                                                         <TableCell className="text-right text-tBase font-poppins">{player.time}</TableCell>
                                                         <TableCell className="text-right text-tBase font-poppins">{getDaysAgo(player.date)}</TableCell>
+                                                        <TableCell className="text-right text-tBase font-poppins ">{player.points}</TableCell>
                                                     </TableRow>
 
                                                     {expandedRun === player.rank && (
