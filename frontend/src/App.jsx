@@ -84,7 +84,7 @@ function App() {
 
                                     <Route path="/leagues/:seasonId/submit" element={<LeagueSubmissionPage />} />
 
-                                    <Route path="/leagues/bracket" element={<BracketPage theme={theme} showUsernameColor={showUsernameColor} />} />
+                                    <Route path="/leagues/:seasonId/bracket" element={<BracketPage theme={theme} showUsernameColor={showUsernameColor} />} />
 
                                     <Route
                                         path="/new_submission"

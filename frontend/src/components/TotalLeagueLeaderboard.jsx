@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { getRankDisplay } from '../helpers';
 import {useApi} from "@/contexts/ApiProvider.jsx";
 
-const TotalLeagueLeaderboard = ({ season = 'su_25', themeString, showUsernameColor }) => {
+const TotalLeagueLeaderboard = ({ seasonId, themeString, showUsernameColor }) => {
     const [leaderboardData, setLeaderboardData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ const TotalLeagueLeaderboard = ({ season = 'su_25', themeString, showUsernameCol
         const fetchLeaderboard = async () => {
             try {
                 setLoading(true);
-                const endpoint = `/leagues/${season}`;
+                const endpoint = `/leagues/${seasonId}`;
                 const response = await api.get(endpoint);
 
                 if (response.ok) {
@@ -31,7 +31,7 @@ const TotalLeagueLeaderboard = ({ season = 'su_25', themeString, showUsernameCol
         };
 
         fetchLeaderboard();
-    }, [season]);
+    }, [seasonId]);
 
     const calculateRanks = (data) => {
         return data.map((user, index) => ({

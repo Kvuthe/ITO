@@ -87,6 +87,7 @@ const LeagueSubmissionPage = () => {
                 level: formData.level,
                 video_url: formData.video_url,
                 time_complete: timeComplete,
+                season: seasonId,
                 minutes,
                 seconds,
                 milliseconds

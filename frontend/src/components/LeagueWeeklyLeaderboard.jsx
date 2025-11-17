@@ -249,10 +249,10 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                     <CardHeader className="flex flex-row justify-between items-center">
                         <CardTitle className="text-tBase font-poppins">Select IL</CardTitle>
                         <Link
-                            to="/leagues/bracket"
+                            to={`/leagues/${seasonId}/bracket`}
                             className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
                         >
-                            Bracket
+                            Rankings
                         </Link>
                     </CardHeader>
                     <CardContent>

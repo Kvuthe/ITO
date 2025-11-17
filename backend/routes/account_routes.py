@@ -410,11 +410,12 @@ def create_league_submission(session):
         week = data.get('week')
         level = data.get('level')
         video_url = data.get('video_url')
+        season = data.get('season')
 
         if time_milliseconds is None or time_seconds is None or time_minutes is None or week is None or level is None or video_url is None:
             return ito_api_response(success=False, message='Please fill in all the fields', status_code=400)
 
-        season = 'su_25'
+        # season = 'su_25'
         if len(time_milliseconds) < 3:
             time_milliseconds += "0"
         time_int = convert_time_to_int(time_milliseconds, time_seconds, time_minutes)
