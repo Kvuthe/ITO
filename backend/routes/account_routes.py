@@ -181,6 +181,7 @@ def profile_page(session, username):
 
         data['rank'] = user_rank
         data['ordered_submissions'], data['chapter_scores'] = organize_submissions(data['submissions'])
+        data['badges'] = get_all_list(user.badges)
         data.pop('password')
 
         return ito_api_response(success=True, data=data, message='Account profile page retrieved', status_code=200)

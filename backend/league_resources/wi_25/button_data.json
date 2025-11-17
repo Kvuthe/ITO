@@ -1,0 +1,121 @@
+{
+  "week_1": {
+    "levels": {
+      "1" : {
+        "name": "test_one",
+        "category": "Any%",
+        "background": "/league_resources/images/Backbike.png",
+        "Timing Start": "",
+        "Timing End": "",
+        "Extra Info": ""
+      },
+      "2": {
+        "name": "test_two",
+        "category": "Any%",
+        "background": "/league_resources/images/Backbike.png",
+        "Timing Start": "",
+        "Timing End": "",
+        "Extra Info": ""
+      },
+      "3": {
+        "name": "test_three",
+        "category": "Inbounds",
+        "background": "/league_resources/images/Backbike.png",
+        "Timing Start": "CP Statue Room",
+        "Timing End": "",
+        "Extra Info": ""
+      },
+      "4": {
+        "name": "test_four",
+        "category": "Inbounds",
+        "background": "/league_resources/images/Backbike.png",
+        "Timing Start": "",
+        "Timing End": "",
+        "Extra Info": ""
+      }
+    },
+    "open": true,
+    "currently_running": true
+  },
+  "week_2": {
+    "levels": {
+      "1" : {
+        "name": "BTD Wall Climb",
+        "category": "Any%",
+        "background": "/league_resources/images/BTDWallClimb.png",
+        "Timing Start": "CP VacuumNoIntro",
+        "Timing End": "RCP Near Weight",
+        "Extra Info": ""
+      },
+      "2": {
+        "name": "Turn Up",
+        "category": "Any%",
+        "background": "/league_resources/images/GreenFingers.png",
+        "Timing Start": "CP RainbowSlideNoCutscene",
+        "Timing End": "RCP @ Save",
+        "Extra Info": ""
+      },
+      "3": {
+        "name": "Warming Up Ice",
+        "category": "Inbounds",
+        "background": "/league_resources/images/WarmingUpIce.png",
+        "Timing Start": "CP Cabin",
+        "Timing End": "Within Magnet Range",
+        "Extra Info": "Time ends on first frame your within magnet interact range."
+      },
+      "4": {
+        "name": "Depths Intro",
+        "category": "Inbounds",
+        "background": "/league_resources/images/DepthsIntro.png",
+        "Timing Start": "CP MineIntroNoCutscene",
+        "Timing End": "RCP Yellow Box",
+        "Extra Info": ""
+      }
+    },
+    "open": false,
+    "currently_running": false
+  },
+  "week_3": {
+    "levels": {
+      "1" : {
+      "name": "Pillow Fort",
+      "category": "Any%",
+      "background": "/league_resources/images/PillowFort.png",
+      "Timing Start": "CP Pillow Fort Intro No CS",
+      "Timing End": "RCP @ Save",
+      "Extra Info": ""
+      },
+      "2": {
+        "name": "Green Fingers",
+        "category": "Any%",
+        "background": "/league_resources/images/GreenFingers.png",
+        "Timing Start": "CP Intro_NoCutscene",
+        "Timing End": "Interact with Spa Door",
+        "Extra Info": "Time ends on the first frame of the \"Partner Indicator\" disappears off screen\n\nThis run follows the Any% route, however since there is no clear way to confirm CP progression please make a concerted effort to enter each CP volume."
+      },
+      "3": {
+        "name": "Town May Tower",
+        "category": "Inbounds",
+        "background": "/league_resources/images/TownMayTower.png",
+        "Timing Start": "CP Town Door",
+        "Timing End": "RCP @ Save",
+        "Extra Info": ""
+      },
+      "4": {
+        "name": "Rails",
+        "category": "Inbounds",
+        "background": "/league_resources/images/Rails.png",
+        "Timing Start": "CP Rails",
+        "Timing End": "RCP @ Save",
+        "Extra Info": ""
+      }
+    },
+    "open": false,
+    "currently_running": false
+  },
+  "tie_breaker": {
+    "name": "Slippery Start",
+    "category": "Any%",
+    "background": "/league_resources/images/BitingTheDust.jpg"
+  }
+}

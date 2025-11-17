@@ -7,7 +7,7 @@ import {getRankDisplay, BASE_API_URL, convertToEmbedUrl, getDaysAgo} from "@/hel
 import {Link} from "react-router-dom";
 import { Info } from 'lucide-react';
 
-export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor }) {
+export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUsernameColor }) {
     const [selectedLevel, setSelectedLevel] = useState(1);
     const [selectedWeek, setSelectedWeek] = useState(1);
     const [leagueButtons, setLeagueButtons] = useState([]);
@@ -31,7 +31,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
         setError(null);
 
         try {
-            const endpoint = `/leagues/buttons/su_25`;
+            const endpoint = `/leagues/buttons/${seasonId}`;
             const response = await api.get(endpoint);
 
             if (!response.ok) {
@@ -146,7 +146,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
         setError(null);
 
         try {
-            const buttonEndpoint = `/leagues/buttons/su_25`;
+            const buttonEndpoint = `/leagues/buttons/${seasonId}`;
             const buttonResponse = await api.get(buttonEndpoint);
 
             if (buttonResponse.ok) {
@@ -181,7 +181,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                 }
             }
 
-            const endpoint = `/leagues/su_25/week_${selectedWeek}/${selectedLevel}`;
+            const endpoint = `/leagues/${seasonId}/week_${selectedWeek}/${selectedLevel}`;
             const response = await api.get(endpoint);
 
             if (!response.ok) {
@@ -342,9 +342,6 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                                         using your point totals from the previous 3 weeks. If for some reason there is a
                                         TIE, we will use a final map to decide seeding distribution between the two
                                         players.
-                                        This event will stand as an introduction to the Leagues system and gauge the
-                                        communities interest in the event. If you find this event fun and want it to
-                                        continue, please consider participating as that is how we will gauge interest.
                                     </div>
                                 </div>
                             </div>
@@ -387,7 +384,7 @@ export default function LeagueWeeklyLeaderboard({ themeString, showUsernameColor
                             </CardTitle>
                             {user && (
                                 <Link
-                                    to="/leagues/submit"
+                                    to={`/leagues/${seasonId}/submit`}
                                     className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
                                 >
                                     Submit A Run

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Table
 from sqlalchemy.orm import relationship, declarative_base, backref
 from flask import jsonify, make_response
 import jwt
@@ -10,6 +10,12 @@ from bcrypt import hashpw, checkpw
 API_KEY = os.environ.get("SECRET_KEY")
 Base = declarative_base()
 
+user_badges = Table('user_badges', Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id'), primary_key=True),
+    Column('badge_id', Integer, ForeignKey('badge.id'), primary_key=True),
+    Column('date', DateTime)
+)
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
@@ -19,6 +25,7 @@ class User(Base):
     creation_date = Column(DateTime)
     score = Column(Integer)
     submissions = relationship('Submission', foreign_keys='Submission.user_id', backref='user')
+    badges = relationship('Badge', secondary=user_badges, back_populates='users')
     league_runs = relationship('LeagueRun', foreign_keys='LeagueRun.user_id', backref='user')
     role = Column(Integer) # Enumeration
     flag = Column(String(4))
@@ -137,3 +144,13 @@ class LeagueRun(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     rank = Column(Integer)
     points = Column(Integer)
+
+
+class Badge(Base):
+    __tablename__ = 'badge'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255))
+    viewable = Column(Boolean)
+    url = Column(String(255))
+    users = relationship('User', secondary=user_badges, back_populates='badges')
+

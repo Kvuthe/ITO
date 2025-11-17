@@ -5,9 +5,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useApi } from '@/contexts/ApiProvider.jsx';
 import { useUser } from '@/contexts/UserProvider.jsx';
+import {useParams} from "react-router-dom";
 
 const LeagueSubmissionPage = () => {
     const api = useApi();
+    const { seasonId } = useParams();
     const user = useUser();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -31,7 +33,7 @@ const LeagueSubmissionPage = () => {
     useEffect(() => {
         const fetchLeagueData = async () => {
             try {
-                const response = await api.get('/leagues/buttons/su_25');
+                const response = await api.get(`/leagues/buttons/${seasonId}`);
                 if (response.ok) {
                     const data = response.body.data;
                     setLeagueData(data);

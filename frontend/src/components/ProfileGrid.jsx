@@ -15,7 +15,9 @@ import {
     formatSubChapter,
     getRankDisplay,
     getDaysAgo,
-    convertUnixToDateInput, navigateToLeaderboardWithRefresh
+    convertUnixToDateInput,
+    navigateToLeaderboardWithRefresh,
+    BASE_API_URL
 } from "../helpers.jsx"
 
 const EditRunModal = ({ run, onClose, onSave }) => {
@@ -592,6 +594,23 @@ const ProfileGrid = ({ username, showUsernameColor }) => {
                                         <circle cx="12" cy="12" r="3"/>
                                     </svg>
                                 </button>
+                            )}
+                            {profileData.badges && profileData.badges.length > 0 && (
+                                <div className="absolute top-14 right-4 flex gap-2">
+                                    {profileData.badges.slice(0, 6).map((badge, index) => {
+                                        const badgeName = badge.url.split('/').pop().replace(/_/g, ' ').replace('.svg', '');
+                                        const badgeUrl = `${BASE_API_URL}/api/league_resources/badges/${badge.url}`;
+                                        return (
+                                            <img
+                                                key={badge.url}
+                                                src={badgeUrl}
+                                                alt={badgeName}
+                                                className="w-8 h-8 object-contain"
+                                                title={badgeName}
+                                            />
+                                        );
+                                    })}
+                                </div>
                             )}
 
                             {/*<Link*/}

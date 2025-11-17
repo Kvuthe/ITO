@@ -208,6 +208,27 @@ const navigateToLeaderboardWithRefresh = (run, onClose = null) => {
     window.location.href = `/itt?${params.toString()}`;
 };
 
+const formatSeasonName = (seasonId) => {
+    if (!seasonId) return '';
+
+    const match = seasonId.match(/^(su|wi|sp|fa)_(\d+)$/i);
+
+    if (!match) return seasonId;
+
+    const [, seasonPrefix, year] = match;
+
+    const seasonMap = {
+        'su': 'Summer',
+        'wi': 'Winter',
+        'sp': 'Spring',
+        'fa': 'Fall'
+    };
+
+    const seasonName = seasonMap[seasonPrefix.toLowerCase()] || seasonPrefix;
+
+    return `${seasonName} ${year}`;
+};
+
 export{
     convertToEmbedUrl,
     formatCategory,
@@ -217,6 +238,7 @@ export{
     getDaysAgo,
     convertUnixToDateInput,
     navigateToLeaderboardWithRefresh,
+    formatSeasonName,
     themeShadows,
     BASE_API_URL
 };

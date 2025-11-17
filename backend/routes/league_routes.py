@@ -13,18 +13,24 @@ from routes.helpers import ito_api_response, get_single_entry, get_submission_en
 from models import Submission, User, LeagueRun
 from session import db_session
 
+BASE_DIR = 'league_resources'
+
 
 @app.route('/api/league_resources/images/<path:filename>')
-def serve_season_resources(filename):
-    resources_dir = os.path.join('league_resources', 'images')
+def serve_season_images(filename):
+    resources_dir = os.path.join(BASE_DIR, 'images')
+    return send_from_directory(resources_dir, filename)
+
+@app.route('/api/league_resources/badges/<path:filename>')
+def serve_season_badges(filename):
+    resources_dir = os.path.join(BASE_DIR, 'badges')
     return send_from_directory(resources_dir, filename)
 
 @app.route('/api/leagues/buttons/<season>', methods=['GET'])
 @db_session
 def get_buttons_leaderboard(session, season):
     try:
-        season = 'su_25'  # current season
-        button_data_fp = f'league_resources/{season}/button_data.json'
+        button_data_fp = f'{BASE_DIR}/{season}/button_data.json'
 
         with open(button_data_fp, 'r') as button_data_file:
             button_data = json.load(button_data_file)
@@ -42,7 +48,7 @@ def get_buttons_leaderboard(session, season):
                 top_three_runs = (
                     session.query(LeagueRun)
                     .options(joinedload(LeagueRun.user))
-                    .filter(LeagueRun.week == week_key, LeagueRun.level == level_key)
+                    .filter(LeagueRun.week == week_key, LeagueRun.level == level_key, LeagueRun.season == season)
                     .order_by(LeagueRun.time_complete.asc())
                     .limit(3)
                     .all()
@@ -136,7 +142,7 @@ def get_leagues_total_leaderboard(session, season):
 def get_leagues_results(season):
 
     try:
-        results_json_fp = f'league_resources/{season}/bracket_results.json'
+        results_json_fp = f'{BASE_DIR}/{season}/bracket_results.json'
         with open(results_json_fp, 'r') as f:
             results_json = json.load(f)
 
@@ -145,3 +151,23 @@ def get_leagues_results(season):
         print(e)
         return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}",
                                 status_code=500, error=str(e))
+
+
+@app.route('/api/leagues/all_seasons', methods=['GET'])
+def get_leagues_seasons():
+
+    try:
+        dirs = os.listdir(BASE_DIR)
+
+        seasons = []
+
+        for directory in dirs:
+            if directory == 'images' or directory == 'badges':
+                continue
+            seasons.append(directory)
+
+        return ito_api_response(success=True, status_code=200, data=seasons, message='success')
+
+    except Exception as e:
+        print(e)
+        return ito_api_response(success=False, message=f"Failed on {request.method} to {request.endpoint}", status_code=500, error=str(e))

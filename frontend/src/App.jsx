@@ -12,6 +12,7 @@ import RegisterPage from './pages/RegisterPage.jsx';
 import MainPage from './pages/MainPage.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import ModPage from './pages/ModPage.jsx';
+import LeagueSelectionPage from './pages/LeagueSelectionPage.jsx';
 
 import UserProvider from './contexts/UserProvider.jsx';
 import FlashProvider from './contexts/FlashProvider.jsx';
@@ -78,9 +79,10 @@ function App() {
 
                                     <Route path="/itt" element={<MainPage theme={theme} showUsernameColor={showUsernameColor} />} />
 
-                                    <Route path="/leagues" element={<LeaguePage theme={theme} showUsernameColor={showUsernameColor} />} />
+                                    <Route path="/leagues" element={<LeagueSelectionPage />} />
+                                    <Route path="/leagues/:seasonId" element={<LeaguePage theme={theme} showUsernameColor={showUsernameColor} />} />
 
-                                    <Route path="/leagues/submit" element={<LeagueSubmissionPage />} />
+                                    <Route path="/leagues/:seasonId/submit" element={<LeagueSubmissionPage />} />
 
                                     <Route path="/leagues/bracket" element={<BracketPage theme={theme} showUsernameColor={showUsernameColor} />} />
 

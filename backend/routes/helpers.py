@@ -100,15 +100,33 @@ def update_submission_rankings(session, category, chapter, sub_chapter):
 
     session.commit()
 
+
+def distribute_points(n: int):
+    if n == 0:
+        return []
+    pool = 100 + 5 * n
+    divisor = n * (n + 1) // 2
+    points = []
+    for i in range(n):
+        raw = pool * (n - i) // divisor
+        points.append(raw)
+    points[-1] += pool - sum(points)
+    return points
+
+
 def update_league_rankings(session, season, week, level):
     """ Updates all the individual league run rankings after a new submission is made.
-    Assigns ranks and points where last gets 1 point, 2nd last gets 2 points, etc.
+    Uses a weighted point distribution where 1st place gets the most points.
+    Points are split evenly among tied players.
 
     :param session: database connection
     :param season: season when submitted
     :param week: week number of submission
     :param level: level number of submission
     """
+
+    if season == 'su_25':
+        return
 
     runs = (
         session.query(LeagueRun)
@@ -119,23 +137,39 @@ def update_league_rankings(session, season, week, level):
         .all()
     )
 
-    total_runs = len(runs)
+    if not runs:
+        return
+
+    number_of_runs = len(runs)
+
+    points_distribution = distribute_points(number_of_runs)
+
     prev_time = None
-    prev_rank = 0
-    count_same_time = 1
+    current_rank = 0
+    tied_players = []
 
-    for run in runs:
+    for i, run in enumerate(runs):
         if run.time_complete == prev_time:
-            run.rank = prev_rank
-            count_same_time += 1
+            tied_players.append(run)
         else:
-            run.rank = prev_rank + count_same_time
-            prev_rank = run.rank
-            prev_time = run.time_complete
-            count_same_time = 1
+            if tied_players:
+                tied_positions = range(current_rank - 1, current_rank - 1 + len(tied_players))
+                avg_points = sum(points_distribution[pos] for pos in tied_positions) / len(tied_players)
 
-        # Assign points based on reverse ranking
-        run.points = total_runs - run.rank + 1
+                for tied_run in tied_players:
+                    tied_run.points = avg_points
+
+            current_rank = i + 1
+            run.rank = current_rank
+            tied_players = [run]
+            prev_time = run.time_complete
+
+    if tied_players:
+        tied_positions = range(current_rank - 1, current_rank - 1 + len(tied_players))
+        avg_points = sum(points_distribution[pos] for pos in tied_positions) / len(tied_players)
+
+        for tied_run in tied_players:
+            tied_run.points = avg_points
 
     session.commit()
 
