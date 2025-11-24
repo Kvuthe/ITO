@@ -5,11 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useApi } from '@/contexts/ApiProvider.jsx';
 import { useUser } from '@/contexts/UserProvider.jsx';
-import {useParams} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const LeagueSubmissionPage = () => {
     const api = useApi();
     const { seasonId } = useParams();
+    const navigate = useNavigate();
     const user = useUser();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -153,7 +154,27 @@ const LeagueSubmissionPage = () => {
             <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
                 <Card className="w-full max-w-xl h-[700px] bg-fgPrimary border-0 mt-24">
                     <CardHeader>
-                        <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                        <div className="relative">
+                            <button
+                                onClick={() => navigate(`/leagues/${seasonId}`)}
+                                className="absolute left-0 top-0 p-2 bg-bgPrimary text-tBase hover:bg-colorActive rounded-full transition-colors"
+                                aria-label="Back to leagues"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-6 w-6 text-tBase"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                        </div>
+                        <div className="text-center text-sm text-tBase font-poppins opacity-75">
+                            Week {currentWeek}
+                        </div>
                     </CardHeader>
                     <CardContent className="flex items-center justify-center">
                         <div className="text-center text-tBase font-poppins">
@@ -169,7 +190,24 @@ const LeagueSubmissionPage = () => {
         <div className="flex items-center justify-center min-h-screen bg-bgPrimary">
             <Card className="w-full max-w-xl h-[700px] overflow-auto bg-fgPrimary border-0 mt-24" ref={cardRef}>
                 <CardHeader>
-                    <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                    <div className="relative">
+                        <button
+                            onClick={() => navigate(`/leagues/${seasonId}`)}
+                            className="absolute left-0 top-0 p-2 bg-bgPrimary text-tBase hover:bg-colorActive rounded-full transition-colors"
+                            aria-label="Back to leagues"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 text-tBase"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <CardTitle className="text-2xl text-center text-tBase font-poppins">Submit League Entry</CardTitle>
+                    </div>
                     <div className="text-center text-sm text-tBase font-poppins opacity-75">
                         Week {currentWeek}
                     </div>

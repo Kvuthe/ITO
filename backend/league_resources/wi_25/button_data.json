@@ -2,40 +2,40 @@
   "week_1": {
     "levels": {
       "1" : {
-        "name": "test_one",
+        "name": "Deeply Rooted Wall Climb",
         "category": "Any%",
-        "background": "/league_resources/images/Backbike.png",
-        "Timing Start": "",
-        "Timing End": "",
-        "Extra Info": ""
+        "background": "/league_resources/images/DeeplyRootedWallClimb.png",
+        "Timing Start": "CP Entry or Entry (No Cutscene)",
+        "Timing End": "RCP @ Save",
+        "Extra Info": "If starting from \"Entry\" make sure your are doing using \"Experimental new timer that 'removes' ping\" to remove your CS time"
       },
       "2": {
-        "name": "test_two",
+        "name": "Winter Village",
         "category": "Any%",
-        "background": "/league_resources/images/Backbike.png",
-        "Timing Start": "",
-        "Timing End": "",
+        "background": "/league_resources/images/WinterVillage.png",
+        "Timing Start": "CP Town Entry (No Cutscene)",
+        "Timing End": "Bobsled Grab",
         "Extra Info": ""
       },
       "3": {
-        "name": "test_three",
+        "name": "Statue Room May Side",
         "category": "Inbounds",
-        "background": "/league_resources/images/Backbike.png",
+        "background": "/league_resources/images/StatueRoomMaySide.png",
         "Timing Start": "CP Statue Room",
-        "Timing End": "",
-        "Extra Info": ""
+        "Timing End": "Interact with Key",
+        "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen after interacting with the left key."
       },
       "4": {
-        "name": "test_four",
+        "name": "Hopscotch Blocks",
         "category": "Inbounds",
-        "background": "/league_resources/images/Backbike.png",
-        "Timing Start": "",
-        "Timing End": "",
+        "background": "/league_resources/images/HopscotchBlocks.png",
+        "Timing Start": "CP Intro - No Cutscene",
+        "Timing End": "RCP @ Save",
         "Extra Info": ""
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "week_2": {
     "levels": {
