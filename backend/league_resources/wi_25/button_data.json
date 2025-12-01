@@ -35,7 +35,7 @@
       }
     },
     "open": true,
-    "currently_running": true
+    "currently_running": false
   },
   "week_2": {
     "levels": {
@@ -56,12 +56,12 @@
         "Extra Info": ""
       },
       "3": {
-        "name": "Warming Up Ice",
+        "name": "Flipping Ice",
         "category": "Inbounds",
-        "background": "/league_resources/images/WarmingUpIce.png",
-        "Timing Start": "CP Cabin",
+        "background": "/league_resources/images/FlippingIce.png",
+        "Timing Start": "CP Flipper",
         "Timing End": "Within Magnet Range",
-        "Extra Info": "Time ends on first frame your within magnet interact range."
+        "Extra Info": "Flipping Ice is a custom route for races only and won’t be considered an ITO on the main leaderboards. The use of character abilities is not permitted.\nTime ends on first frame your within magnet interact range."
       },
       "4": {
         "name": "Depths Intro",
@@ -72,8 +72,8 @@
         "Extra Info": ""
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "week_3": {
     "levels": {
