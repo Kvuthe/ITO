@@ -52,7 +52,8 @@ const LandingPage = ({ theme }) => {
 
     return (
         <div className="flex flex-col mx-auto bg-fgPrimary min-h-screen">
-            <div className="bg-gradient-to-b from-bgPrimary bg-fgPrimary bg-[length:100%_400px] bg-no-repeat flex justify-center h-[500px]">
+            <div
+                className="bg-gradient-to-b from-bgPrimary bg-fgPrimary bg-[length:100%_400px] bg-no-repeat flex justify-center h-[500px]">
                 <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl px-4">
                     {/* Image container with centered content for mobile */}
                     <div className="relative flex justify-center md:justify-start md:-mr-6 md:mt-12">
@@ -71,7 +72,7 @@ const LandingPage = ({ theme }) => {
                     {/* Text and button container */}
                     <div
                         className="text-tBase font-bold font-poppinsBold text-4xl md:text-8xl text-left mt-6 md:mt-60">
-                    <p>IT</p>
+                        <p>IT</p>
                         <div className="relative">
                             <Link to="/itt">
                                 <button
@@ -173,11 +174,80 @@ const LandingPage = ({ theme }) => {
                             </li>
                             <li className="flex items-center border-b-2 border-bBase p-4 pt-2">
                                 <span className="text-tBase font-bold text-4xl pr-4 text-right w-16">#4</span>
-                                <p>Video proof must be required for the top 3 times. Videos must include the full run with the timer on screen.</p>
+                                <p>Video proof must be required for the top 3 times. Videos must include the full run
+                                    with the timer on screen.</p>
                             </li>
                             <li className="flex items-center border-b-2 border-bBase p-4 pt-2">
                                 <span className="text-tBase font-bold text-4xl pr-4 text-right w-16">#5</span>
-                                <p>Runs will be given points based off of their placement on the leaderboard. For example, last place would get 1 point, 2nd to last would get 2 points, and so on.</p>
+                                <p>Runs will be given points based off of their placement on the leaderboard. For
+                                    example, last place would get 1 point, 2nd to last would get 2 points, and so
+                                    on.</p>
+                            </li>
+                        </ul>
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="bg-fgPrimary flex items-center justify-center" id="league-rules">
+                <Card className="w-full max-w-5xl bg-bgPrimary border-0 p-4 mt-10 mb-10">
+                    <CardHeader className="p-4 pl-6">
+                        <CardTitle className="text-tBase font-poppinsBold text-4xl">League Rules</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ul className="space-y-3 text-tBase font-poppins">
+                            <li className="flex items-center border-b-2 border-t-2 border-bBase p-4">
+                                <span className="text-tBase font-bold text-4xl pr-3 text-right w-16">#1</span>
+                                <div>
+                                    <p>
+                                        Runs must be performed using the standard ITO submission rules.
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="flex items-center border-b-2 border-bBase p-4">
+                                <span className="text-tBase font-bold text-4xl pr-3 text-right w-16">#2</span>
+                                <div>
+                                    <p className="mb-2">
+                                        Since runs during this event must be performed within designated weeks, you must
+                                        provide a way to validate your runs. Below are two acceptable methods:
+                                    </p>
+                                    <ul className="list-disc ml-6 space-y-2">
+                                        <li>
+                                            Add a browser source to OBS using{' '}
+                                            <a
+                                                href="https://time.curby.net/clock"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                this link
+                                            </a>
+                                            {' '}which will show the current time and date. Make sure the source is
+                                            visible and legible at all times. Learn how to add the source{' '}
+                                            <a
+                                                href="https://youtu.be/j0J12OpFWUY"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                here
+                                            </a>.
+                                        </li>
+                                        <li>
+                                            Once you complete a run, navigate to your desktop and show the current time
+                                            and date on your task bar to verify the run happened during the correct time
+                                            period. This can be accomplished by either Alt Tabbing or pressing your
+                                            Windows key. See an example{' '}
+                                            <a
+                                                href="https://youtu.be/qhbBlRdZ60c"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                here
+                                            </a>. If recording with OBS, make sure to be using Display Capture as Game
+                                            Capture will not show your desktop.
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </CardContent>

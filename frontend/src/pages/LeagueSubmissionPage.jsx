@@ -320,6 +320,18 @@ const LeagueSubmissionPage = () => {
                             {loading ? 'Submitting...' : 'Submit League Entry'}
                         </Button>
                     </div>
+
+                    <div className="mt-4">
+                        <p className="text-tBase font-poppins text-xs text-left">
+                            Make sure your submission is valid with the{' '}
+                        <a
+                            href="/#league-rules"
+                            className="text-colorActive hover:underline"
+                        >
+                            rules
+                            </a>.
+                        </p>
+                    </div>
                 </CardContent>
             </Card>
         </div>

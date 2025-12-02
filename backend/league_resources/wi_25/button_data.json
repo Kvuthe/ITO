@@ -50,7 +50,7 @@
       "2": {
         "name": "Turn Up",
         "category": "Any%",
-        "background": "/league_resources/images/GreenFingers.png",
+        "background": "/league_resources/images/TurnUp.png",
         "Timing Start": "CP RainbowSlideNoCutscene",
         "Timing End": "RCP @ Save",
         "Extra Info": ""

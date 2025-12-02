@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { getRankDisplay } from '../helpers';
 import {useApi} from "@/contexts/ApiProvider.jsx";
+import {useNavigate} from "react-router-dom";
 
 const TotalLeagueLeaderboard = ({ seasonId, themeString, showUsernameColor }) => {
     const [leaderboardData, setLeaderboardData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const api = useApi();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLeaderboard = async () => {
@@ -60,7 +62,27 @@ const TotalLeagueLeaderboard = ({ seasonId, themeString, showUsernameColor }) =>
 
     return (
         <div className="w-full">
-            <Card className="border-0 bg-fgPrimary rounded-none overflow-hidden z-12">
+            <Card className="border-0 bg-fgPrimary overflow-hidden z-12 mt-24">
+                <CardHeader>
+                    <div className="relative">
+                        <button
+                            onClick={() => navigate(`/leagues/${seasonId}`)}
+                            className="absolute left-0 top-0 p-2 bg-bgPrimary text-tBase hover:bg-colorActive rounded-full transition-colors"
+                            aria-label="Back to leagues"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 text-tBase"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <CardTitle className="text-2xl text-center text-tBase font-poppins">League Leaderboard</CardTitle>
+                    </div>
+                </CardHeader>
                 <CardContent className="p-8">
                     <Table>
                         <TableHeader className="bg-fgSecondary">
