@@ -73,7 +73,7 @@
       }
     },
     "open": true,
-    "currently_running": true
+    "currently_running": false
   },
   "week_3": {
     "levels": {
@@ -110,8 +110,8 @@
         "Extra Info": ""
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "tie_breaker": {
     "name": "Slippery Start",
