@@ -1,2 +1,3 @@
 backend/env_prod.env
+backend/env_test.env
 backend/.venv/

@@ -30,7 +30,8 @@ def serve_season_badges(filename):
 @db_session
 def get_buttons_leaderboard(session, season):
     try:
-        button_data_fp = f'{BASE_DIR}/{season}/button_data.json'
+        matched_dir = next(d for d in os.listdir(BASE_DIR) if d.endswith(f'_{season}') or d == season)
+        button_data_fp = f'{BASE_DIR}/{matched_dir}/button_data.json'
 
         with open(button_data_fp, 'r') as button_data_file:
             button_data = json.load(button_data_file)
@@ -164,7 +165,7 @@ def get_leagues_seasons():
         for directory in dirs:
             if directory == 'images' or directory == 'badges':
                 continue
-            seasons.append(directory)
+            seasons.append(directory.split('_', 1)[1])
 
         return ito_api_response(success=True, status_code=200, data=seasons, message='success')
 

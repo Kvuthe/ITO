@@ -7,6 +7,13 @@ import time
 import re
 import threading
 
+
+LEAGUE_PLACEMENT_POINTS = {
+    1: 100, 2: 70, 3: 55, 4: 45, 5: 37,
+    6: 31, 7: 26, 8: 22, 9: 19, 10: 16,
+    11: 14, 12: 12, 13: 10, 14: 9, 15: 8
+}
+
 def calculate_timeframe_score(user, time_frame, category):
     """ Calculates the user's score based on the specified time frame.
 
@@ -116,7 +123,7 @@ def distribute_points(n: int):
 
 def update_league_rankings(session, season, week, level):
     """ Updates all the individual league run rankings after a new submission is made.
-    Assigns ranks and points where last gets 1 point, 2nd last gets 2 points, etc.
+    Assigns ranks and points based on pre-determined distribution of points.
 
     :param session: database connection
     :param season: season when submitted
@@ -133,7 +140,6 @@ def update_league_rankings(session, season, week, level):
         .all()
     )
 
-    total_runs = len(runs)
     prev_time = None
     prev_rank = 0
     count_same_time = 1
@@ -148,8 +154,8 @@ def update_league_rankings(session, season, week, level):
             prev_time = run.time_complete
             count_same_time = 1
 
-        # Assign points based on reverse ranking
-        run.points = total_runs - run.rank + 1
+        # Assign points based on distribution ranking
+        run.points = LEAGUE_PLACEMENT_POINTS.get(run.rank, 0)
 
     session.commit()
 

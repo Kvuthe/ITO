@@ -1,0 +1,121 @@
+{
+  "week_1": {
+    "levels": {
+      "1" : {
+        "name": "Depths Intro",
+        "category": "Any%",
+        "background": "/league_resources/images/DepthsIntro.png",
+        "Timing End": "RCP Yellow Box",
+        "Timing Start": "CP MineIntroNoCutscene",
+        "Extra Info": "If starting from \"Entry\" make sure your are doing using \"Experimental new timer that 'removes' ping\" to remove your CS time"
+      },
+      "2": {
+        "name": "Setting Stage Pre MGW",
+        "category": "Any%",
+        "background": "/league_resources/images/WinterVillage.png",
+        "Timing End": "RCP @ MGW Timing",
+        "Timing Start": "CP ConcertHall_Backstage_NoCS",
+        "Extra Info": ""
+      },
+      "3": {
+        "name": "Depths",
+        "category": "Inbounds",
+        "background": "/league_resources/images/StatueRoomMaySide.png",
+        "Timing End": "RCP Yellow Box",
+        "Timing Start": "CP MineIntroNoCutscene",
+        "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen after interacting with the left key."
+      },
+      "4": {
+        "name": "Statue Room May Side",
+        "category": "Inbounds",
+        "background": "/league_resources/images/StatueRoomMaySide.png",
+        "Timing End": "Interact with Key",
+        "Timing Start": "CP Statue Room",
+        "Extra Info": ""
+      }
+    },
+    "open": false,
+    "currently_running": false
+  },
+  "week_2": {
+    "levels": {
+      "1" : {
+        "name": "Fresh Air",
+        "category": "Any%",
+        "background": "/league_resources/images/BTDWallClimb.png",
+        "Timing End": "Handle Interact",
+        "Timing Start": "CP Tree_Approach_LevelStart" ,
+        "Extra Info": ""
+      },
+      "2": {
+        "name": "Green Fingers",
+        "category": "Any%",
+        "background": "/league_resources/images/GreenFingers.png",
+        "Timing End": "Interact with Spa Door",
+        "Timing Start": "CP Intro_NoCutscene",
+        "Extra Info": ""
+      },
+      "3": {
+        "name": "Slippery Slopes Start",
+        "category": "Inbounds",
+        "background": "/league_resources/images/SlipperyStart.png",
+        "Timing End": "First Frame of Landing Over Wall",
+        "Timing Start": "CP Entry (No cutscene)",
+        "Extra Info": "Flipping Ice is a custom route for races only and won’t be considered an ITO on the main leaderboards. The use of character abilities is not permitted.\nTime ends on first frame your within magnet interact range."
+      },
+      "4": {
+        "name": "Statue Room Cody Side",
+        "category": "Inbounds",
+        "background": "/league_resources/images/DepthsIntro.png",
+        "Timing End": "Interact with Cog Wheel",
+        "Timing Start": "CP Statue Room",
+        "Extra Info": ""
+      }
+    },
+    "open": false,
+    "currently_running": false
+  },
+  "week_3": {
+    "levels": {
+      "1" : {
+      "name": "BTD Wall Climb",
+      "category": "Any%",
+      "background": "/league_resources/images/BTDWallClimb.png",
+      "Timing End": "RCP Near Weight",
+      "Timing Start": "CP VacuumNoIntro",
+      "Extra Info": ""
+      },
+      "2": {
+        "name": "Deeply Rooted Wall Climb",
+        "category": "Any%",
+        "background": "/league_resources/images/DeeplyRootedWallClimb.png",
+        "Timing End": "RCP @ Save",
+        "Timing Start": "CP Entry or Entry (No Cutscene)",
+        "Extra Info": "Time ends on the first frame of the \"Partner Indicator\" disappears off screen\n\nThis run follows the Any% route, however since there is no clear way to confirm CP progression please make a concerted effort to enter each CP volume."
+      },
+      "3": {
+        "name": "BTD",
+        "category": "Inbounds",
+        "background": "/league_resources/images/BitingTheDust.png",
+        "Timing End": "RCP Near Weight",
+        "Timing Start": "CP VacuumNoIntro",
+        "Extra Info": ""
+      },
+      "4": {
+        "name": "Burrower",
+        "category": "Inbounds",
+        "background": "/league_resources/images/Rails.png",
+        "Timing End": "Interact with Spa Door",
+        "Timing Start": "CP Burrow Enemy",
+        "Extra Info": ""
+      }
+    },
+    "open": false,
+    "currently_running": false
+  },
+  "tie_breaker": {
+    "name": "Slippery Start",
+    "category": "Any%",
+    "background": "/league_resources/images/BitingTheDust.jpg"
+  }
+}

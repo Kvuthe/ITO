@@ -8,7 +8,8 @@ from models import User, Submission, LeagueRun
 from routes.helpers import (ito_api_response, get_single_entry, get_all_list, update_submission_rankings, \
                             update_player_scores, convert_time_to_int, organize_submissions, get_user_categories, \
                             categories_to_bits, extract_time_components, get_first_place_run, notify_discord_bot, \
-                            convert_int_to_time, update_league_rankings, is_username_available, format_chapter, format_subchapter)
+                            convert_int_to_time, update_league_rankings, is_username_available, format_chapter, \
+                            format_subchapter)
 from routes.auth_routes import token_auth
 from session import db_session
 
@@ -415,7 +416,7 @@ def create_league_submission(session):
         if time_milliseconds is None or time_seconds is None or time_minutes is None or week is None or level is None or video_url is None:
             return ito_api_response(success=False, message='Please fill in all the fields', status_code=400)
 
-        # season = 'su_25'
+        # season = '1_su_25'
         if len(time_milliseconds) < 3:
             time_milliseconds += "0"
         time_int = convert_time_to_int(time_milliseconds, time_seconds, time_minutes)
