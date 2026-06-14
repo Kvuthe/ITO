@@ -4,7 +4,7 @@ import ThirdSvg from "@/assets/3rd.svg";
 import FourthSvg from "@/assets/4th.svg";
 
 const BASE_API_URL = 'http://localhost:6005';
-// const BASE_API_URL = 'https://ito-website.onrender.com';
+// const BASE_API_URL = 'https://ito.itt.run';
 
 const themeShadows = {
     Light: `

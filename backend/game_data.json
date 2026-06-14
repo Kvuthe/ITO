@@ -134,6 +134,11 @@
             "Timing End": "Bobsled Grab",
             "Timing Start": "CP Town Entry (No Cutscene)"
           },
+          "Left Tower Puzzle": {
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen.",
+            "Timing End": "Elevator Interact",
+            "Timing Start": "CP Left Tower Puzzle"
+          },
           "Bti Wall Climb": {
             "Extra Info": "",
             "Timing End": "Cutscene",
@@ -153,6 +158,17 @@
             "Extra Info": "Time ends on the first frame the active player's indicator arrow disappears from the non-active player's view (once no longer split screen).",
             "Timing End": "Read Note",
             "Timing Start": "CP Collapse"
+          },
+          "Winter Village Spline Launch": {
+            "Extra Info": "Rail storage is banned from being used in this ITO.",
+            "Timing End": "RCP @ MGW Timing",
+            "Timing Start": "CP Town Entry (No Cutscene)"
+          },
+
+          "Bti Ice Race Oob": {
+            "Extra Info": "",
+            "Timing End": "RCP @ Save",
+            "Timing Start": "MINIGAME_IceRace"
           }
         },
         "Garden": {
@@ -192,6 +208,11 @@
             "Extra Info": "",
             "Timing End": "RCP @ Save",
             "Timing Start": "CP RainbowSlideNoCutscene"
+          },
+          "Turn Up Spline Launch": {
+            "Extra Info": "",
+            "Timing End": "Ending Intro",
+            "Timing Start": "CP RainBowSlideNoCutscene"
           },
           "Turn Up Post Rcp": {
             "Extra Info": "",
@@ -380,10 +401,25 @@
             "Timing End": "RCP @ Save",
             "Timing Start": "CP Town Door"
           },
+          "Left Tower Puzzle": {
+            "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen.",
+            "Timing End": "Elevator Interact",
+            "Timing Start": "CP Left Tower Puizzle"
+          },
           "Bobsled": {
             "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen.",
             "Timing End": "Bobsled Interact",
             "Timing Start": "CP Town Bobsled"
+          },
+          "Winter Village Spline Launch": {
+            "Extra Info": "Rail storage is banned from being used in this ITO.",
+            "Timing End": "RCP @ MGW Timing",
+            "Timing Start": "CP Town Entry (No Cutscene)"
+          },
+          "Bti Ice Race Oob": {
+            "Extra Info": "",
+            "Timing End": "RCP @ Save",
+            "Timing Start": "MINIGAME_IceRace"
           },
           "Bti To Wrench": {
             "Extra Info": "Time ends on first frame your within magnet interact range.",
@@ -497,6 +533,11 @@
           "Turn Up Slide": {
             "Extra Info": "",
             "Timing End": "RCP @ Save",
+            "Timing Start": "CP RainBowSlideNoCutscene"
+          },
+          "Turn Up Spline Launch": {
+            "Extra Info": "",
+            "Timing End": "Ending Intro",
             "Timing Start": "CP RainBowSlideNoCutscene"
           }
         }

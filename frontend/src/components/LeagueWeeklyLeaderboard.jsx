@@ -6,6 +6,7 @@ import { useApi } from "@/contexts/ApiProvider.jsx";
 import {getRankDisplay, BASE_API_URL, convertToEmbedUrl, getDaysAgo} from "@/helpers.jsx";
 import {Link} from "react-router-dom";
 import { Info } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUsernameColor }) {
     const [selectedLevel, setSelectedLevel] = useState(1);
@@ -249,7 +250,15 @@ export default function LeagueWeeklyLeaderboard({ seasonId, themeString, showUse
                 {/* League buttons card */}
                 <Card className="flex-1 bg-fgPrimary border-none">
                     <CardHeader className="flex flex-row justify-between items-center">
-                        <CardTitle className="text-tBase font-poppins">Select IL</CardTitle>
+                        <div className="flex flex-row items-center gap-2">
+                            <Link
+                                to="/leagues"
+                                className="bg-fgThird text-tBase rounded-full p-2 z-10 hover:bg-colorActive hover:text-tDarkBg transition-colors"
+                            >
+                                <ChevronLeft size={24}/>
+                            </Link>
+                            <CardTitle className="text-tBase font-poppins">Select IL</CardTitle>
+                        </div>
                         <Link
                             to={`/leagues/${seasonId}/bracket`}
                             className="block text-colorActive bg-fgThird rounded-lg p-2 hover:bg-colorActive hover:text-tDarkBg font-poppins border-colorActive border-2 font-bold"
