@@ -12,7 +12,7 @@
       "2": {
         "name": "Setting Stage Pre MGW",
         "category": "Any%",
-        "background": "/league_resources/images/WinterVillage.png",
+        "background": "/league_resources/images/SettingStagePreMGW.png",
         "Timing End": "RCP @ MGW Timing",
         "Timing Start": "CP ConcertHall_Backstage_NoCS",
         "Extra Info": ""
@@ -20,7 +20,7 @@
       "3": {
         "name": "Depths",
         "category": "Inbounds",
-        "background": "/league_resources/images/StatueRoomMaySide.png",
+        "background": "/league_resources/images/Depths.png",
         "Timing End": "RCP Yellow Box",
         "Timing Start": "CP MineIntroNoCutscene",
         "Extra Info": "Time ends on the first frame of the \"Cancel\" prompt appearing on screen after interacting with the left key."
@@ -34,15 +34,15 @@
         "Extra Info": ""
       }
     },
-    "open": false,
-    "currently_running": false
+    "open": true,
+    "currently_running": true
   },
   "week_2": {
     "levels": {
       "1" : {
         "name": "Fresh Air",
         "category": "Any%",
-        "background": "/league_resources/images/BTDWallClimb.png",
+        "background": "/league_resources/images/FreshAir.png",
         "Timing End": "Handle Interact",
         "Timing Start": "CP Tree_Approach_LevelStart" ,
         "Extra Info": ""
@@ -66,7 +66,7 @@
       "4": {
         "name": "Statue Room Cody Side",
         "category": "Inbounds",
-        "background": "/league_resources/images/DepthsIntro.png",
+        "background": "/league_resources/images/StatueRoomCodySide.png",
         "Timing End": "Interact with Cog Wheel",
         "Timing Start": "CP Statue Room",
         "Extra Info": ""
@@ -104,7 +104,7 @@
       "4": {
         "name": "Burrower",
         "category": "Inbounds",
-        "background": "/league_resources/images/Rails.png",
+        "background": "/league_resources/images/Burrower.png",
         "Timing End": "Interact with Spa Door",
         "Timing Start": "CP Burrow Enemy",
         "Extra Info": ""
